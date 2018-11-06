@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<GenericModel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.example.org/GenericModel1.0.3">
+    <GeneralInformation>
+        <Name>Toy Model for Testing Purposes</Name>
+        <Identifier>Toy_Model_Generic_01</Identifier>
+        <Author>
+            <Title>Dr.</Title>
+            <FamilyName>Romanov</FamilyName>
+            <GivenName>Natalia</GivenName>
+            <Email>black_widow@marvel.com</Email>
+            <Telephone>030 12345</Telephone>
+            <StreetAddress>Nahmitzer Damm 40</StreetAddress>
+            <Country>Russian Federation</Country>
+            <City>Berlin</City>
+            <Region>Berlin-Brandenburg</Region>
+            <Organization>SHIELD</Organization>
+        </Author>
+        <CreationDate>2018-04-20</CreationDate>
+        <Rights>Creative Commons Attribution-NonCommercial 4.0</Rights>
+        <Reference>
+            <IsReferenceDescription>true</IsReferenceDescription>
+            <Type>PAMP</Type>
+            <Date>3805-07-02</Date>
+            <Doi>10.1111/risa.12758</Doi>
+            <AuthorList>Jack Bauer, Kiefer Sutherland</AuthorList>
+            <Title>Quantitative Risk Assessment of Norovirus Transmission in Food Establishments: Evaluating the Impact
+                of Intervention Strategies and Food Employee Behavior on the Risk Associated with Norovirus in Foods
+            </Title>
+            <Abstract>
+                This research looks at the work of Margaret C. Anderson, the editor of the Little Review.  The review
+                published first works by Sherwood Anderson, James Joyce, Wyndham Lewis, and Ezra Pound.  This research
+                draws upon mostly primary sources including memoirs, published letters, and a complete collection of the
+                Little Review. Most prior research on Anderson focuses on her connection to the famous writers and
+                personalities that she published and associated with.  This focus undermines her role as the dominant
+                creative force behind one of the most influential little magazines published in the 20th Century. This
+                case example shows how little magazine publishing is arguably a literary art
+            </Abstract>
+            <Status>Accepted</Status>
+            <Website>https://nature.com</Website>
+            <Comment>publisher demands edits</Comment>
+        </Reference>
+    </GeneralInformation>
+</GenericModel>
