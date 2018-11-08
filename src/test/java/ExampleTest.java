@@ -27,7 +27,12 @@ public class ExampleTest {
         Schema schema = factory.newSchema(schemaFile);
         Validator validator = schema.newValidator();
 
+        // Test generic model
         File sample0 = new File(ExampleTest.class.getResource("sample0.xml").getFile());
         validator.validate(new StreamSource(sample0));
+
+        // Test dose response model
+        File sample1 = new File(ExampleTest.class.getResource("sample1.xml").getFile());
+        validator.validate(new StreamSource(sample1));
     }
 }
