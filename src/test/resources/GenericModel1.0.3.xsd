@@ -108,13 +108,13 @@
             <element name="Source" type="string" minOccurs="0"/>
             <element name="Identifier" type="string"/>
             <element name="Author" type="tns:Contact"/>
-            <element name="Creators" type="tns:Contact" minOccurs="0"/>
+            <element name="Creator" type="tns:Contact" minOccurs="0" maxOccurs="unbounded"/>
             <element name="CreationDate" type="date"/>
             <element name="ModificationDate" type="date" minOccurs="0"/>
             <element name="Rights" type="string"/>
             <element name="Available" type="boolean" minOccurs="0"/>
             <element name="Format" type="string" minOccurs="0"/>
-            <element name="Reference" type="tns:Reference"/>
+            <element name="Reference" type="tns:Reference" maxOccurs="unbounded"/>
             <element name="Language" type="string" minOccurs="0"/>
             <element name="Software" type="string" minOccurs="0"/>
             <element name="LanguageWrittenIn" type="string" minOccurs="0"/>
@@ -148,6 +148,7 @@
                                  minOccurs="0"/>
                         <element name="AssayTechnologyType" type="string"
                                  minOccurs="0"/>
+                        <element name="AssayTechnologyPlatform" type="string" minOccurs="0"/>
                         <element name="AssayTechnologyTypePlatform" type="string"
                                  minOccurs="0"/>
                         <element
@@ -162,12 +163,13 @@
                                  minOccurs="0"/>
                         <element name="ProtocolParametersName" type="string"
                                  minOccurs="0"/>
+                        <element name="ProtocolComponentsName" type="string" minOccurs="0"/>
                         <element name="ProtocolComponentsType" type="string"
                                  minOccurs="0"/>
                     </sequence>
                 </complexType>
             </element>
-            <element name="StudySample" minOccurs="0">
+            <element name="StudySample" minOccurs="0" maxOccurs="unbounded">
                 <complexType>
                     <sequence>
                         <element name="SampleName" type="string"/>
@@ -185,7 +187,7 @@
                     </sequence>
                 </complexType>
             </element>
-            <element name="DietaryAssessmentMethod" minOccurs="0">
+            <element name="DietaryAssessmentMethod" minOccurs="0" maxOccurs="unbounded">
                 <complexType>
                     <sequence>
                         <element name="CollectionTool" type="string" minOccurs="0"/>
@@ -200,7 +202,7 @@
                     </sequence>
                 </complexType>
             </element>
-            <element name="Laboratory">
+            <element name="Laboratory" minOccurs="0" maxOccurs="unbounded">
                 <complexType>
                     <sequence>
                         <element name="Accreditation" type="string" minOccurs="0"/>
@@ -211,7 +213,7 @@
                 </complexType>
             </element>
 
-            <element name="assay" minOccurs="0">
+            <element name="Assay" minOccurs="0" maxOccurs="unbounded">
                 <complexType>
                     <sequence>
                         <element name="Name" type="string"/>
@@ -226,7 +228,7 @@
                                  minOccurs="0"/>
                         <element name="ContaminationRange" type="string"
                                  minOccurs="0"/>
-                        <element name="UncertaintyValue" type="string"/>
+                        <element name="UncertaintyValue" type="string" minOccurs="0" />
                     </sequence>
                 </complexType>
             </element>
@@ -235,7 +237,7 @@
 
     <complexType name="Scope">
         <sequence>
-            <element name="Product" minOccurs="0">
+            <element name="Product" minOccurs="0" maxOccurs="unbounded">
                 <complexType>
                     <sequence>
                         <element name="Name" type="string"/>
@@ -253,7 +255,7 @@
                 </complexType>
             </element>
 
-            <element name="Hazard" minOccurs="0">
+            <element name="Hazard" minOccurs="0" maxOccurs="unbounded">
                 <complexType>
                     <sequence>
                         <element name="Type" type="string" minOccurs="0"/>
@@ -281,7 +283,7 @@
                 </complexType>
             </element>
 
-            <element name="PopulationGroup" minOccurs="0">
+            <element name="PopulationGroup" minOccurs="0" maxOccurs="unbounded">
                 <complexType>
                     <sequence>
                         <element name="Name" type="string"/>
@@ -378,7 +380,18 @@
                     </sequence>
                 </complexType>
             </element>
-            <element name="QualityMeasures" type="string" minOccurs="0"/>
+            <element name="QualityMeasures" minOccurs="0">
+                <complexType>
+                    <sequence>
+                        <element name="SSE" type="double" minOccurs="0"/>
+                        <element name="MSE" type="double" minOccurs="0"/>
+                        <element name="RMSE" type="double" minOccurs="0"/>
+                        <element name="RSquared" type="double" minOccurs="0"/>
+                        <element name="AIC" type="double" minOccurs="0"/>
+                        <element name="BIC" type="double" minOccurs="0"/>
+                    </sequence>
+                </complexType>
+            </element>
             <element name="ModelEquation" minOccurs="0">
                 <complexType>
                     <sequence>
@@ -416,10 +429,10 @@
     <element name="GenericModel">
         <complexType>
             <sequence>
-                <element name="GeneralInformation" type="tns:GeneralInformation" />
-                <element name="Scope" type="tns:Scope" minOccurs="0" />
-                <element name="DataBackground" type="tns:DataBackground" minOccurs="0" />
-                <element name="ModelMath" type="tns:ModelMath" minOccurs="0" />
+                <element name="GeneralInformation" type="tns:GeneralInformation"/>
+                <element name="Scope" type="tns:Scope" minOccurs="0"/>
+                <element name="DataBackground" type="tns:DataBackground" minOccurs="0"/>
+                <element name="ModelMath" type="tns:ModelMath" minOccurs="0"/>
             </sequence>
         </complexType>
     </element>
