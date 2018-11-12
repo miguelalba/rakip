@@ -1,0 +1,325 @@
+\documentclass[a4paper]{report}
+
+\usepackage{listings}
+    
+% Macros for primitive XML types
+\newcommand{\booleantype}{\textbf{boolean}}
+\newcommand{\datetype}{\textbf{date}}
+\newcommand{\stringtype}{\textbf{string}}
+
+\begin{document}
+
+\chapter{Introduction}
+
+The RAKIP Markup Language (RakML) is an XML-based format for the description of model metadata.
+
+...
+
+\chapter{Technical specification}
+
+\section{Primitive data types}
+The primitive data types used in RAKIP-ML are taken from the XML Schema 1.0 including: \stringtype, \booleantype, \textbf{int} and \textbf{date}.
+
+\section{General structure}
+Every RAKIP model involves four main metadata components: general information, scope, data background and model math. A RAKIP-ML document has one model with these components.
+
+\section{Common types}
+...
+
+\subsection{Assay}
+
+\begin{tabular}{|l|c|c|c|}
+    \hline
+    \textbf{Element} & \textbf{Type} & \textbf{Min. Ocurrences} & \textbf{Max. Ocurrences} \\
+    \hline
+    Name & string & 1 & 1 \\
+    Description & string & 0 & 1 \\
+    MoisturePercentage & string 0 & 1 \\
+    FatPercentage & string & 0 & 1 \\
+    DetectionLimit & string & 0 & 1 \\
+    QuantificationLimit & string & 0 & 1 \\
+    LeftCensoredData & string & 0 & 1 \\
+    ContaminationRange & string & 0 & 1 \\
+    UncertaintyValue & string & 0 & 1 \\
+    \hline
+\end{tabular}
+
+\paragraph{Name}
+A name given to the assay.
+
+\paragraph{Description}
+General description of the assay. Corresponds to the Protocol REF in ISA.
+
+\paragraph{MoisturePercentage}
+Percentage of moisture in the original sample.
+
+\paragraph{FatPercentage}
+Percentage of fat in the original sample.
+
+\paragraph{DetectionLimit}
+Limit of detection reported in the unit specified by the variable ``Hazard Unit''.
+
+\paragraph{QuantificationLimit}
+Limit of quantification reported in the unit specified by the variable ``Hazard Unit''.
+
+\paragraph{LeftCensoredData}
+Percentage of measures equal to LOQ and/or LOD.
+
+\paragraph{ContaminationRange}
+Range of result of the analytical measure reported in the unit specified by the variable ``Hazard unit''.
+
+\paragraph{UncertaintyValue}
+Indicate the expanded uncertainty (usually 95\% confidence interval) value associated with the measurement expressed in the unit reported in the field ``Hazard unit''.
+
+Example:
+\begin{lstlisting}[basicstyle=\footnotesize]
+<Name>Bradford protein assay</Name>
+<Description>spectroscopic analytical procedure used to measure
+    the concentration of protein in a solution. It is subjective,
+    i.e., dependent on the amino acid composition of the
+    measured protein.
+</Description>
+<DetectionLimit>30-300</DetectionLimit>
+<QuantificationLimit>5000 - 8000</QuantificationLimit>
+<ContaminationRange>500-4000</ContaminationRange>
+\end{lstlisting}
+
+\subsection{Contact}
+
+\begin{tabular}{|l|c|c|c|}
+    \hline
+    \textbf{Element} & \textbf{Type} & \textbf{Min. Ocurrences} & \textbf{Max. Ocurrences} \\
+    \hline
+    Title & string & 0 & 1 \\
+    FamilyName & string & 0 & 1 \\
+    GivenName & string & 0 & 1 \\
+    Email & string & 1 & 1 \\
+    Telephone & string & 0 & 1 \\
+    StreetAddress & string & 0 & 1\\
+    Country & string & 0 & 1 \\
+    City & string & 0 & 1 \\
+    ZipCode & string & 0 & 1 \\
+    Region & string & 0 & 1 \\
+    TimeZone & string & 0 & 1 \\
+    Gender & string & 0 & 1 \\
+    Note & string & 0 & 1 \\
+    Organization & string & 0 & 1 \\
+    \hline
+\end{tabular}
+
+Example:
+\begin{lstlisting}[basicstyle=\footnotesize]
+<Title>Dr.</Title>
+<FamilyName>Romanov</FamilyName>
+<GivenName>Natalia</GivenName>
+<Email>black_widow@marvel.com</Email>
+<Telephone>030 12345</Telephone>
+<StreetAddress>Nahmitzer Damm 40</StreetAddress>
+<Country>Russian Federation</Country>
+<City>Berlin</City>
+<Region>Berlin-Brandenburg</Region>
+<Organization>SHIELD</Organization>
+\end{lstlisting}
+
+\section{GeneralInformation}
+
+\begin{tabular}{|l|c|c|c|}
+    \hline
+    \textbf{Element} & \textbf{Type} & \textbf{Min. Ocurrences} & \textbf{Max. Ocurrences} \\
+    \hline
+    Name & string & 1 & 1 \\
+    Source & string & 0 & 1\\
+    Identifier & string & 1 & 1 \\
+    Author & Contact & 0 & unbounded \\
+    Creator & Contact & 1 & 1 \\
+    CreationDate & date & 1 & 1 \\
+    ModificationDate & date & 0 & unbounded \\
+    Rights* & string & 1 & 1 \\
+    Available & string & 0 & 1 \\
+    Format & string & 0 & 1 \\
+    Reference & Reference & 1 & unbounded \\
+    Language & string & 0 & 1 \\
+    Software & string & 0 & 1 \\
+    LanguageWrittenIn & string & 0 & 1 \\
+    ModelCategory & ModelCategory & 0 & 1 \\
+    Status & string & 0 & 1 \\
+    Objective & string & 0 & 1 \\
+    Description & string & 0 & 1 \\
+    \hline
+\end{tabular}
+
+\paragraph{Name}
+Name given to the model or data.
+
+\paragraph{Source}
+A related resource from which the described resources is derived.
+
+\paragraph{Identifier}
+An unambiguous ID given to the model or data.
+
+\paragraph{Author}
+Person who generated the model code or generated the data set originally.
+
+\paragraph{Creator}
+The person responsible for creating the model file in the present form or the person responsible for creating the data file in the present form.
+
+\paragraph{CreationDate}
+Temporal information on the model creation date.
+
+\paragraph{ModificationDate}
+Temporal information on the last modification of the model.
+
+\paragraph{Rights}
+Information on rights held in and over the resource.
+
+\paragraph{Available}
+Availability of data or model.
+
+\paragraph{Format}
+Form of model or data (file extension).
+
+\paragraph{Reference}
+
+\paragraph{Language}
+Language of the resource.
+
+\paragraph{Software}
+Program in which the model has been implemented.
+
+\paragraph{LanguageWrittenIn}
+Language used to write the model, e.g. R or Matlab.
+
+\paragraph{ModelCategory}
+
+\paragraph{Status}
+Curation status of the model.
+
+\paragraph{Objective}
+Objective of the model or data.
+
+\paragraph{Description}
+General description of the study, data or model.
+
+% TODO: Describe class Reference
+\subsection{Reference}
+
+\begin{tabular}{|l|c|c|c|}
+    \hline
+    \textbf{Element} & \textbf{Type} & \textbf{Min. Ocurrences} & \textbf{Max. Ocurrences} \\
+    \hline
+    IsReferenceDescription* & boolean & 1 & 1 \\
+    Type & string & 0 & 1 \\
+    Date & string & 0 & 1 \\
+    Pmid & string & 0 & 1 \\
+    Doi & string & 0 & 1 \\
+    AuthorList & string & 0 & 1\\
+    Title & string & 1 & 1\\
+    Abstract & string & 0 & 1 \\
+    Journal & string & 0 & 1\\
+    Volume & int & 0 & 1 \\
+    Issue & int & 0 & 1 \\
+    Status & string & 0 & 1 \\
+    Website & string & 0 & 1 \\
+    Comment & string & 0 & 1 \\
+    \hline
+\end{tabular}
+
+\paragraph{IsReferenceDescription}
+Indicates whether the publication serves as the reference description for the model.
+
+\begin{table}
+    \centering
+    \begin{tabular}{l l l l l l l}    
+        \hline
+        ABST & CHAP & DICT & GEN & MANSCPT & PCOMM & VIDEO \\
+        ADVS & CHART & EBOOK & GOVDOC & MAP & RPRT & \\
+        AGGR & CLSWK & ECHAP & GRANT & MGZN & SER & \\
+        ANCIENT & COMP & EDBOOK & HEAR & MPCT & SLIDE & \\
+        ART & CONF & EDJOUR & ICOMM & MULTI & SOUND & \\
+        BILL & CPAPER & ELECT & INPR & MUSIC & STAND & \\
+        BLOG & CTLG & ENCYC & JOUR & NEW & STAT & \\
+        BOOK & DATA & EQUA & JFULL & PAMP & THES & \\
+        CASE & DBASE & FIGURE & LEGAL & PAT & UNPB & \\
+        \hline
+    \end{tabular}
+    \caption{Publication types}
+    \label{table:publicationtypes}
+\end{table}
+
+\paragraph{Type}
+Type of the publication. Takes a value from the reserved words listed at \ref{table:publicationtypes}.
+
+\paragraph{Year}
+Temporal information on the publication date.
+
+\paragraph{Pmid}
+The PubMed ID related to this publication.
+
+\paragraph{Doi}
+The DOI related to this publication.
+
+\paragraph{AuthorList}
+Name and surname of the authors who contributed to this publication.
+
+\paragraph{Title}
+Title of the publication in which the model or the data has been described.
+
+\paragraph{Abstract}
+Abstract of the publication in which the model or the data has been described.
+
+\paragraph{Journal}
+Publication journal.
+
+\paragraph{Volume}
+Publication volume.
+
+\paragraph{Issue}
+Publication issue.
+
+\paragraph{Status}
+Publication status.
+
+\paragraph{Website}
+Publication website.
+
+\paragraph{Comment}
+Publication comment.
+
+Example:
+
+\begin{lstlisting}[basicstyle=\footnotesize]
+<Reference>
+    <IsReferenceDescription>true</IsReferenceDescription>
+    <Type>PAMP</Type>
+    <Date>3805-07-02</Date>
+    <Doi>10.1111/risa.12758</Doi>
+    <AuthorList>Jack Bauer, Kiefer Sutherland</AuthorList>
+    <Title>Quantitative Risk Assessment of Norovirus Transmission
+        in Food Establishments: Evaluating the Impact of
+        Intervention Strategies and Food Employee Behavior on the
+        Risk Associated with Norovirus in Foods.
+    </Title>
+    <Abstract>
+        This research looks at the work of Margaret C. Anderson,
+        the editor of the Little Review. The review published
+        first works by Sherwood Anderson, James Joyce, Wyndham
+        Lewis, and Ezra Pound. This research draws upon mostly
+        primary sources including memoirs, published letters, and
+        a complete collection of the Little Review. Most prior
+        research on Anderson focuses on her connection to the
+        famous writers and personalities that she published and
+        associated with. This focus undermines her role as the
+        dominant creative force behind one of the most influential
+        little magazines published in the 20th Century. This case
+        example shows how little magazine publishing is arguably a
+        literary art.
+    </Abstract>
+    <Status>Accepted</Status>
+    <Website>https://nature.com</Website>
+    <Comment>publisher demands edits</Comment>
+</Reference>
+\end{lstlisting}    
+
+% TODO: Describe class ModelCategory
+
+\end{document}
