@@ -451,82 +451,6 @@ distribution of surveyed people according to the season (influence consumption p
 <BIC>1.0</BIC>
 \end{lstlisting}
 
-\section{GeneralInformation}
-
-\starttable
-    \R Name | string | 1 | 1
-    \R Source | string | 0 | 1
-    \R Identifier | string | 1 | 1
-    \R Author | Contact | 1 | 1
-    \R Creator | Contact | 1 | 1
-    \R CreationDate | date | 1 | 1
-    \R ModificationDate | date | 0 | *
-    \R Rights | string | 1 | 1
-    \R Available | string | 0 | 1
-    \R Format | string | 0 | 1
-    \R Reference | Reference | 1 | *
-    \R Language | string | 0 | 1
-    \R Software | string | 0 | 1
-    \R LanguageWrittenIn | string | 0 | 1
-    \R ModelCategory | ModelCategory | 0 | 1
-    \R Status | string | 0 | 1
-    \R Objective | string | 0 | 1
-    \R Description | string | 0 | 1
-\stoptable{arg}
-
-\paragraph{Name}
-Name given to the model or data.
-
-\paragraph{Source}
-A related resource from which the described resources is derived.
-
-\paragraph{Identifier}
-An unambiguous ID given to the model or data.
-
-\paragraph{Author}
-Person who generated the model code or generated the data set originally.
-
-\paragraph{Creator}
-The person responsible for creating the model file in the present form or the person responsible for creating the data file in the present form.
-
-\paragraph{CreationDate}
-Temporal information on the model creation date.
-
-\paragraph{ModificationDate}
-Temporal information on the last modification of the model.
-
-\paragraph{Rights}
-Information on rights held in and over the resource.
-
-\paragraph{Available}
-Availability of data or model.
-
-\paragraph{Format}
-Form of model or data (file extension).
-
-\paragraph{Reference}
-
-\paragraph{Language}
-Language of the resource.
-
-\paragraph{Software}
-Program in which the model has been implemented.
-
-\paragraph{LanguageWrittenIn}
-Language used to write the model, e.g. R or Matlab.
-
-\paragraph{ModelCategory}
-
-\paragraph{Status}
-Curation status of the model.
-
-\paragraph{Objective}
-Objective of the model or data.
-
-\paragraph{Description}
-General description of the study, data or model.
-
-% TODO: Describe class Reference
 \subsection{Reference}
 
 \starttable
@@ -632,5 +556,80 @@ Publication comment.
 <Website>https://nature.com</Website>
 <Comment>publisher demands edits</Comment>
 \end{lstlisting}
+
+\section{GeneralInformation}
+
+\starttable
+    \R Name | string | 1 | 1
+    \R Source | string | 0 | 1
+    \R Identifier | string | 1 | 1
+    \R Author | Contact | 1 | 1
+    \R Creator | Contact | 1 | 1
+    \R CreationDate | date | 1 | 1
+    \R ModificationDate | date | 0 | *
+    \R Rights | string | 1 | 1
+    \R Available | string | 0 | 1
+    \R Format | string | 0 | 1
+    \R Reference | Reference | 1 | *
+    \R Language | string | 0 | 1
+    \R Software | string | 0 | 1
+    \R LanguageWrittenIn | string | 0 | 1
+    \R ModelCategory | ModelCategory | 0 | 1
+    \R Status | string | 0 | 1
+    \R Objective | string | 0 | 1
+    \R Description | string | 0 | 1
+\stoptable{arg}
+
+\paragraph{Name}
+Name given to the model or data.
+
+\paragraph{Source}
+A related resource from which the described resources is derived.
+
+\paragraph{Identifier}
+An unambiguous ID given to the model or data.
+
+\paragraph{Author}
+Person who generated the model code or generated the data set originally.
+
+\paragraph{Creator}
+The person responsible for creating the model file in the present form or the person responsible for creating the data file in the present form.
+
+\paragraph{CreationDate}
+Temporal information on the model creation date.
+
+\paragraph{ModificationDate}
+Temporal information on the last modification of the model.
+
+\paragraph{Rights}
+Information on rights held in and over the resource.
+
+\paragraph{Available}
+Availability of data or model.
+
+\paragraph{Format}
+Form of model or data (file extension).
+
+\paragraph{Reference}
+
+\paragraph{Language}
+Language of the resource.
+
+\paragraph{Software}
+Program in which the model has been implemented.
+
+\paragraph{LanguageWrittenIn}
+Language used to write the model, e.g. R or Matlab.
+
+\paragraph{ModelCategory}
+
+\paragraph{Status}
+Curation status of the model.
+
+\paragraph{Objective}
+Objective of the model or data.
+
+\paragraph{Description}
+General description of the study, data or model.
 
 \end{document}
