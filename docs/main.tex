@@ -119,7 +119,6 @@ Indicate the expanded uncertainty (usually 95\% confidence interval) value assoc
 <Organization>SHIELD</Organization>
 \end{lstlisting}
 
-% TODO: Hazard
 \subsection{Hazard}
 
 \begin{tabular}{|l|c|c|c|}
@@ -200,8 +199,32 @@ of</Description>
 <AcceptableDailyIntake>20 mg</AcceptableDailyIntake>
 \end{lstlisting}
 
-% TODO: Laboratory
-% \subsection{Laboratory}
+\subsection{Laboratory}
+
+\begin{tabular}{|l|c|c|c|}
+    \hline
+    \textbf{Element} & \textbf{Type} & \textbf{Min. Occurrences} & \textbf{Max. Occurrences} \\
+    \hline
+    Accreditation & string & 0 & 1 \\
+    Name & string & 0 & 1 \\
+    Country & string & 0 & 1 \\
+    \hline
+\end{tabular}
+
+\paragraph{Accreditation}
+The laboratory accreditation to ISO/IEC 17025.
+
+\paragraph{Name}
+Laboratory code (National laboratory code if available) or Laboratory name 
+
+\paragraph{Country}
+Country where the laboratory is placed. (ISO 3166-1-alpha-2).
+
+\begin{lstlisting}[basicstyle=\footnotesize, caption={Example of Laboratory}]
+<Accreditation>Accredited</Accreditation>
+<Name>National High Magnetic Field Laboratory</Name>
+<Country>United States</Country>
+\end{lstlisting}   
 
 % TODO: ModelCategory
 % \subsection{ModelCategory}
