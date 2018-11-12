@@ -251,7 +251,101 @@ Defines the impact of the specific process on the hazard
 \begin{lstlisting}[basicstyle=\footnotesize, caption={Example of ModelCategory}]
 <ModelClass>Dose-response model</ModelClass>
 <ModelClassComment>This Model Class is very special</ModelClassComment>
-\end{lstlisting} 
+\end{lstlisting}
+
+\subsection{Parameter}
+
+\begin{tabular}{|l|c|c|c|}
+    \hline
+    \textbf{Element} & \textbf{Type} & \textbf{Min. Occurrences} & \textbf{Max. Occurrences} \\    
+    \hline
+    Id & string & 1 & 1 \\
+    Classification & string & 1 & 1 \\
+    Name & string & 1 & 1 \\
+    Description & string & 0 & 1 \\
+    Unit & string & 1 & 1 \\
+    UnitCategory & string & 0 & 1 \\
+    DataType & string & 0 & 1 \\
+    Source & string & 0 & 1 \\
+    Subject & string & 0 & 1 \\
+    Distribution & string & 0 & 1 \\
+    Value & string & 0 & 1 \\
+    Reference & Reference & 0 & unbounded \\
+    VariabilitySubject & string & 0 & 1 \\
+    MinValue & string & 0 & 1 \\
+    MaxValue & string & 0 & 1 \\
+    Error & string & 0 & 1 \\
+    \hline
+\end{tabular}
+
+\paragraph{Id}
+An unambiguous and sequential ID given to the parameter. To be compatible with SBML, only letters from A to Z, numbers and ``\_'' are acepted for ID creation.
+
+\paragraph{Classification}
+General classification of the parameter (e.g. Input, Constant, Output...).
+
+\paragraph{Name}
+A name given to the parameter.
+
+\paragraph{Description}
+General description of the parameter.
+
+\paragraph{Unit}
+Unit of the parameter.
+
+\paragraph{UnitCategory}
+General classification of the parameter unit.
+
+\paragraph{DataType}
+Information on the data format of the parameter, e.g. if it is a categorial variable, int, double, array of size x,y,z.
+
+\paragraph{Source}
+Information on the type of knowledge used to define the parameter value.
+
+\paragraph{Subject}
+Scope of the parameter, e.g. if it refers to an animal, a batch of animals, a batch of products, a carcass, a carcass skin etc.
+
+\paragraph{Distribution}
+Information on the distribution describing the parameter (e.g. variability, uncertainty, point estimate...) .
+
+\paragraph{Value}
+Numerical value of the parameter. A default value is mandatory (needs to be provided) for each of the the ``Input parameters''. If the parameter value is provided in a file, the path of the file needs to be provided.
+
+\paragraph{Reference}
+Information on the source, where the value of the parameter has been extracted from - if available. The format should use that used in other ``Reference'' metadata. Preferably DOI.
+
+\paragraph{VariabilitySubject}
+Information ``per what'' the variability is described. It can be variability between broiler in a flock,  variability between all meat packages sold in Denmark, variability between days, etc.
+
+\paragraph{MinValue}
+Numerical value of the minimum limit of the parameter that determines the range of applicability for which the model applies
+
+\paragraph{MaxValue}
+Numerical value of the maximum limit of the parameter that determines the range of applicability for which the model applies
+
+\paragraph{Error}
+Error of the parameter value.
+
+\begin{lstlisting}[basicstyle=\footnotesize, caption={Example of Parameter}]
+<Id>Dose_matrix</Id>
+<Classification>input</Classification>
+<Name>Dose_matrix</Name>
+<Description>matrix with GEC NoV for each serving (rows=servings;
+    columns = number of different employee-teams that prepare food)
+</Description>
+<Unit>Others</Unit>
+<UnitCategory>Other</UnitCategory>
+<DataType>matrixOfNumbers</DataType>
+<Source>Article</Source>
+<Subject>Animal</Subject>
+<Distribution>Bernoulli 1</Distribution>
+<Value>as.matrix(read.table(file =\"Dose_matrix.csv\",sep=\",\",
+    header = TRUE, row.names=1))</Value>
+<VariabilitySubject>days</VariabilitySubject>
+<MinValue>10000.0</MinValue>
+<MaxValue>0.0</MaxValue>
+<Error>0.5</Error>
+\end{lstlisting}
 
 \section{GeneralInformation}
 
@@ -448,8 +542,6 @@ Publication comment.
     <Website>https://nature.com</Website>
     <Comment>publisher demands edits</Comment>
 </Reference>
-\end{lstlisting}    
-
-% TODO: Describe class ModelCategory
+\end{lstlisting}
 
 \end{document}
