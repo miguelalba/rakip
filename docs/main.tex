@@ -226,8 +226,32 @@ Country where the laboratory is placed. (ISO 3166-1-alpha-2).
 <Country>United States</Country>
 \end{lstlisting}   
 
-% TODO: ModelCategory
-% \subsection{ModelCategory}
+\subsection{ModelCategory}
+
+\begin{tabular}{|l|c|c|c|}
+    \hline
+    \textbf{Element} & \textbf{Type} & \textbf{Min. Occurrences} & \textbf{Max. Occurrences} \\
+    \hline
+    ModelClass & string & 1 & 1 \\
+    ModelSubClass & string & 0 & 1 \\
+    ModelClassComment & string & 0 & 1 \\
+    BasicProcess & string & 0 & 1 \\
+    \hline
+\end{tabular}
+
+\paragraph{ModelClass}
+Type of model used to build-up the risk assessment structure.
+
+\paragraph{ModelSubClass}
+Sub-cassification of the model given the Model Class
+
+\paragraph{BasicProcess}
+Defines the impact of the specific process on the hazard
+
+\begin{lstlisting}[basicstyle=\footnotesize, caption={Example of ModelCategory}]
+<ModelClass>Dose-response model</ModelClass>
+<ModelClassComment>This Model Class is very special</ModelClassComment>
+\end{lstlisting} 
 
 \section{GeneralInformation}
 
