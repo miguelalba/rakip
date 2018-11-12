@@ -31,6 +31,19 @@
 }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Macros for elements tables %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\starttable{%
+    \tabular{|l|c|c|c|}
+    \hline
+    \textbf{Element} & \textbf{Type} & \textbf{Min. Ocurrences} & \textbf{Max. Ocurrences} \\    
+    \hline
+}
+\def\stoptable{%
+ \hline\endtabular
+}
+\def\R #1|#2|#3|#4{ #1&#2&#3&#4 \\}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
 
 \chapter{Introduction}
@@ -52,21 +65,17 @@ Every RAKIP model involves four main metadata components: general information, s
 
 \subsection{Assay}
 
-\begin{tabular}{|l|c|c|c|}
-    \hline
-    \textbf{Element} & \textbf{Type} & \textbf{Min. Ocurrences} & \textbf{Max. Ocurrences} \\
-    \hline
-    Name & string & 1 & 1 \\
-    Description & string & 0 & 1 \\
-    MoisturePercentage & string & 0 & 1 \\
-    FatPercentage & string & 0 & 1 \\
-    DetectionLimit & string & 0 & 1 \\
-    QuantificationLimit & string & 0 & 1 \\
-    LeftCensoredData & string & 0 & 1 \\
-    ContaminationRange & string & 0 & 1 \\
-    UncertaintyValue & string & 0 & 1 \\
-    \hline
-\end{tabular}
+\starttable
+    \R Name | string | 1 | 1
+    \R Description | string | 0 | 1
+    \R MoisturePercentage | string | 0 | 1
+    \R FatPercentage | string | 0 | 1
+    \R DetectionLimit | string | 0 | 1
+    \R QuantificationLimit | string | 0 | 1
+    \R LeftCensoredData | string | 0 | 1
+    \R ContaminationRange | string | 0 | 1
+    \R UncertaintyValue | string | 0 | 1
+\stoptable
 
 \paragraph{Name}
 A name given to the assay.
@@ -109,26 +118,22 @@ Indicate the expanded uncertainty (usually 95\% confidence interval) value assoc
 
 \subsection{Contact}
 
-\begin{tabular}{|l|c|c|c|}
-    \hline
-    \textbf{Element} & \textbf{Type} & \textbf{Min. Ocurrences} & \textbf{Max. Ocurrences} \\
-    \hline
-    Title & string & 0 & 1 \\
-    FamilyName & string & 0 & 1 \\
-    GivenName & string & 0 & 1 \\
-    Email & string & 1 & 1 \\
-    Telephone & string & 0 & 1 \\
-    StreetAddress & string & 0 & 1\\
-    Country & string & 0 & 1 \\
-    City & string & 0 & 1 \\
-    ZipCode & string & 0 & 1 \\
-    Region & string & 0 & 1 \\
-    TimeZone & string & 0 & 1 \\
-    Gender & string & 0 & 1 \\
-    Note & string & 0 & 1 \\
-    Organization & string & 0 & 1 \\
-    \hline
-\end{tabular}
+\starttable
+    \R Title | string | 0 | 1
+    \R FamilyName | string | 0 | 1
+    \R GivenName | string | 0 | 1
+    \R Email | string | 1 | 1
+    \R Telephone | string | 0 | 1
+    \R StreetAddress | string | 0 | 1
+    \R Country | string | 0 | 1
+    \R City | string | 0 | 1
+    \R ZipCode | string | 0 | 1
+    \R Region | string | 0 | 1
+    \R TimeZone | string | 0 | 1
+    \R Gender | string | 0 | 1
+    \R Note | string | 0 | 1
+    \R Organization | string | 0 | 1
+\stoptable
 
 \begin{lstlisting}[language=RAKIP, caption={Example of Contact}]
 <Title>Dr.</Title>
@@ -145,25 +150,21 @@ Indicate the expanded uncertainty (usually 95\% confidence interval) value assoc
 
 \subsection{Hazard}
 
-\begin{tabular}{|l|c|c|c|}
-    \hline
-    \textbf{Element} & \textbf{Type} & \textbf{Min. Occurrences} & \textbf{Max. Occurrences} \\
-    \hline
-    Type & string & 0 & 1 \\
-    Name & string & 1 & 1 \\
-    Description & string & 0 & 1 \\
-    Unit & string & 0 & 1 \\
-    AdverseEffect & string & 0 & 1 \\
-    SourceOfContamination & string & 0 & 1 \\
-    BenchmarkDose & string & 0 & 1 \\
-    MaximumResidueLimit & string & 0 & 1 \\
-    NoObservedAdverseAffectLevel & string & 0 & 1 \\
-    AcceptableOperatorExposureLevel & string & 0 & 1 \\
-    AcuteReferenceDose & string & 0 & 1 \\
-    AcceptableDailyIntake & string & 0 & 1 \\
-    IndSum & string & 0 & 1 \\
-    \hline
-\end{tabular}
+\starttable
+    \R Type | string | 0 | 1
+    \R Name | string | 1 | 1
+    \R Description | string | 0 | 1
+    \R Unit | string | 0 | 1
+    \R AdverseEffect | string | 0 | 1
+    \R SourceOfContamination | string | 0 | 1
+    \R BenchmarkDose | string | 0 | 1
+    \R MaximumResidueLimit | string | 0 | 1
+    \R NoObservedAdverseAffectLevel | string | 0 | 1
+    \R AcceptableOperatorExposureLevel | string | 0 | 1
+    \R AcuteReferenceDose | string | 0 | 1
+    \R AcceptableDailyIntake | string | 0 | 1
+    \R IndSum | string | 0 | 1
+\stoptable
 
 \paragraph{Type}
 General classification of the hazard for which the model or data applies.
@@ -225,15 +226,11 @@ of</Description>
 
 \subsection{Laboratory}
 
-\begin{tabular}{|l|c|c|c|}
-    \hline
-    \textbf{Element} & \textbf{Type} & \textbf{Min. Occurrences} & \textbf{Max. Occurrences} \\
-    \hline
-    Accreditation & string & 0 & 1 \\
-    Name & string & 0 & 1 \\
-    Country & string & 0 & 1 \\
-    \hline
-\end{tabular}
+\starttable
+    \R Accreditation | string | 0 | 1
+    \R Name | string | 0 | 1
+    \R Country | string | 0 | 1
+\stoptable
 
 \paragraph{Accreditation}
 The laboratory accreditation to ISO/IEC 17025.
@@ -252,16 +249,12 @@ Country where the laboratory is placed. (ISO 3166-1-alpha-2).
 
 \subsection{ModelCategory}
 
-\begin{tabular}{|l|c|c|c|}
-    \hline
-    \textbf{Element} & \textbf{Type} & \textbf{Min. Occurrences} & \textbf{Max. Occurrences} \\
-    \hline
-    ModelClass & string & 1 & 1 \\
-    ModelSubClass & string & 0 & 1 \\
-    ModelClassComment & string & 0 & 1 \\
-    BasicProcess & string & 0 & 1 \\
-    \hline
-\end{tabular}
+\starttable
+    \R ModelClass | string | 1 | 1
+    \R ModelSubClass | string | 0 | 1
+    \R ModelClassComment | string | 0 | 1
+    \R BasicProcess | string | 0 | 1
+\stoptable
 
 \paragraph{ModelClass}
 Type of model used to build-up the risk assessment structure.
@@ -279,28 +272,24 @@ Defines the impact of the specific process on the hazard
 
 \subsection{Parameter}
 
-\begin{tabular}{|l|c|c|c|}
-    \hline
-    \textbf{Element} & \textbf{Type} & \textbf{Min. Occurrences} & \textbf{Max. Occurrences} \\    
-    \hline
-    Id & string & 1 & 1 \\
-    Classification & string & 1 & 1 \\
-    Name & string & 1 & 1 \\
-    Description & string & 0 & 1 \\
-    Unit & string & 1 & 1 \\
-    UnitCategory & string & 0 & 1 \\
-    DataType & string & 0 & 1 \\
-    Source & string & 0 & 1 \\
-    Subject & string & 0 & 1 \\
-    Distribution & string & 0 & 1 \\
-    Value & string & 0 & 1 \\
-    Reference & Reference & 0 & unbounded \\
-    VariabilitySubject & string & 0 & 1 \\
-    MinValue & string & 0 & 1 \\
-    MaxValue & string & 0 & 1 \\
-    Error & string & 0 & 1 \\
-    \hline
-\end{tabular}
+\starttable
+    \R Id | string | 1 | 1
+    \R Classification | string | 1 | 1
+    \R Name | string | 1 | 1
+    \R Description | string | 0 | 1
+    \R Unit | string | 1 | 1
+    \R UnitCategory | string | 0 | 1
+    \R DataType | string | 0 | 1
+    \R Source | string | 0 | 1
+    \R Subject | string | 0 | 1
+    \R Distribution | string | 0 | 1
+    \R Value | string | 0 | 1
+    \R Reference | Reference | 0 | unbounded
+    \R VariabilitySubject | string | 0 | 1
+    \R MinValue | string | 0 | 1
+    \R MaxValue | string | 0 | 1
+    \R Error | string | 0 | 1
+\stoptable
 
 \paragraph{Id}
 An unambiguous and sequential ID given to the parameter. To be compatible with SBML, only letters from A to Z, numbers and ``\_'' are acepted for ID creation.
@@ -453,26 +442,22 @@ General description of the study, data or model.
 % TODO: Describe class Reference
 \subsection{Reference}
 
-\begin{tabular}{|l|c|c|c|}
-    \hline
-    \textbf{Element} & \textbf{Type} & \textbf{Min. Ocurrences} & \textbf{Max. Ocurrences} \\
-    \hline
-    IsReferenceDescription* & boolean & 1 & 1 \\
-    Type & string & 0 & 1 \\
-    Date & string & 0 & 1 \\
-    Pmid & string & 0 & 1 \\
-    Doi & string & 0 & 1 \\
-    AuthorList & string & 0 & 1\\
-    Title & string & 1 & 1\\
-    Abstract & string & 0 & 1 \\
-    Journal & string & 0 & 1\\
-    Volume & int & 0 & 1 \\
-    Issue & int & 0 & 1 \\
-    Status & string & 0 & 1 \\
-    Website & string & 0 & 1 \\
-    Comment & string & 0 & 1 \\
-    \hline
-\end{tabular}
+\starttable
+    \R IsReferenceDescription | boolean | 1 | 1
+    \R Type | string | 0 | 1
+    \R Date | string | 0 | 1
+    \R Pmid | string | 0 | 1
+    \R Doi | string | 0 | 1
+    \R AuthorList | string | 0 | 1
+    \R Title | string | 1 | 1
+    \R Abstract | string | 0 | 1
+    \R Journal | string | 0 | 1
+    \R R Volume | int | 0 | 1
+    \R Issue | int | 0 | 1
+    \R Status | string | 0 | 1
+    \R Website | string | 0 | 1
+    \R Comment | string | 0 | 1
+\stoptable
 
 \paragraph{IsReferenceDescription}
 Indicates whether the publication serves as the reference description for the model.
