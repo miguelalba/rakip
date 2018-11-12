@@ -1,11 +1,35 @@
 \documentclass[a4paper]{report}
 
+\usepackage{color}
 \usepackage{listings}
     
 % Macros for primitive XML types
 \newcommand{\booleantype}{\textbf{boolean}}
 \newcommand{\datetype}{\textbf{date}}
 \newcommand{\stringtype}{\textbf{string}}
+
+% Style for XML code listings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+
+\lstset {
+    basicstyle=\footnotesize,
+    columns=fullflexible,
+    showstringspaces=false,
+    commentstyle=\color{gray}\upshape
+}
+
+\lstdefinelanguage{RAKIP} {
+    morestring=[b]",
+    morestring=[s]{>}{<},
+    morecomment=[s]{<?}{?>},
+    stringstyle=\color{black},
+    identifierstyle=\color{darkblue},
+    keywordstyle=\color{cyan},
+    morekeywords={xmlns,version,type} % list your attributes here
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
@@ -34,7 +58,7 @@ Every RAKIP model involves four main metadata components: general information, s
     \hline
     Name & string & 1 & 1 \\
     Description & string & 0 & 1 \\
-    MoisturePercentage & string 0 & 1 \\
+    MoisturePercentage & string & 0 & 1 \\
     FatPercentage & string & 0 & 1 \\
     DetectionLimit & string & 0 & 1 \\
     QuantificationLimit & string & 0 & 1 \\
@@ -71,7 +95,7 @@ Range of result of the analytical measure reported in the unit specified by the 
 \paragraph{UncertaintyValue}
 Indicate the expanded uncertainty (usually 95\% confidence interval) value associated with the measurement expressed in the unit reported in the field ``Hazard unit''.
 
-\begin{lstlisting}[basicstyle=\footnotesize, caption={Example of Assay}]
+\begin{lstlisting}[caption={Example of Assay}, language=RAKIP]
 <Name>Bradford protein assay</Name>
 <Description>spectroscopic analytical procedure used to measure
     the concentration of protein in a solution. It is subjective,
@@ -106,7 +130,7 @@ Indicate the expanded uncertainty (usually 95\% confidence interval) value assoc
     \hline
 \end{tabular}
 
-\begin{lstlisting}[basicstyle=\footnotesize, caption={Example of Contact}]
+\begin{lstlisting}[language=RAKIP, caption={Example of Contact}]
 <Title>Dr.</Title>
 <FamilyName>Romanov</FamilyName>
 <GivenName>Natalia</GivenName>
@@ -183,7 +207,7 @@ Measure of amount of a specific substance in food or in drinking water tahta can
 \paragraph{IndSum}
 Define if the parameter reported is an individual residue/analyte, a summed residue definition or part of a sum a summed residue definition.
 
-\begin{lstlisting}[basicstyle=\footnotesize, caption={Example of Hazard}]
+\begin{lstlisting}[language=RAKIP, caption={Example of Hazard}]
 <Type>Organic contaminants</Type>
 <Name>Norovirus (Norwalk-like virus)</Name>
 <Description>norovirus is described as nast and hard to get rid
@@ -220,7 +244,7 @@ Laboratory code (National laboratory code if available) or Laboratory name
 \paragraph{Country}
 Country where the laboratory is placed. (ISO 3166-1-alpha-2).
 
-\begin{lstlisting}[basicstyle=\footnotesize, caption={Example of Laboratory}]
+\begin{lstlisting}[language=RAKIP, caption={Example of Laboratory}]
 <Accreditation>Accredited</Accreditation>
 <Name>National High Magnetic Field Laboratory</Name>
 <Country>United States</Country>
@@ -248,7 +272,7 @@ Sub-cassification of the model given the Model Class
 \paragraph{BasicProcess}
 Defines the impact of the specific process on the hazard
 
-\begin{lstlisting}[basicstyle=\footnotesize, caption={Example of ModelCategory}]
+\begin{lstlisting}[language=RAKIP, caption={Example of ModelCategory}]
 <ModelClass>Dose-response model</ModelClass>
 <ModelClassComment>This Model Class is very special</ModelClassComment>
 \end{lstlisting}
@@ -326,7 +350,7 @@ Numerical value of the maximum limit of the parameter that determines the range 
 \paragraph{Error}
 Error of the parameter value.
 
-\begin{lstlisting}[basicstyle=\footnotesize, caption={Example of Parameter}]
+\begin{lstlisting}[language=RAKIP, caption={Example of Parameter}]
 <Id>Dose_matrix</Id>
 <Classification>input</Classification>
 <Name>Dose_matrix</Name>
@@ -511,37 +535,30 @@ Publication website.
 \paragraph{Comment}
 Publication comment.
 
-\begin{lstlisting}[basicstyle=\footnotesize, caption={Example of Reference}]
-<Reference>
-    <IsReferenceDescription>true</IsReferenceDescription>
-    <Type>PAMP</Type>
-    <Date>3805-07-02</Date>
-    <Doi>10.1111/risa.12758</Doi>
-    <AuthorList>Jack Bauer, Kiefer Sutherland</AuthorList>
-    <Title>Quantitative Risk Assessment of Norovirus Transmission
-        in Food Establishments: Evaluating the Impact of
-        Intervention Strategies and Food Employee Behavior on the
-        Risk Associated with Norovirus in Foods.
-    </Title>
-    <Abstract>
-        This research looks at the work of Margaret C. Anderson,
-        the editor of the Little Review. The review published
-        first works by Sherwood Anderson, James Joyce, Wyndham
-        Lewis, and Ezra Pound. This research draws upon mostly
-        primary sources including memoirs, published letters, and
-        a complete collection of the Little Review. Most prior
-        research on Anderson focuses on her connection to the
-        famous writers and personalities that she published and
-        associated with. This focus undermines her role as the
-        dominant creative force behind one of the most influential
-        little magazines published in the 20th Century. This case
-        example shows how little magazine publishing is arguably a
-        literary art.
-    </Abstract>
-    <Status>Accepted</Status>
-    <Website>https://nature.com</Website>
-    <Comment>publisher demands edits</Comment>
-</Reference>
+\begin{lstlisting}[language=RAKIP, caption={Example of Reference}]
+<IsReferenceDescription>true</IsReferenceDescription>
+<Type>PAMP</Type>
+<Date>3805-07-02</Date>
+<Doi>10.1111/risa.12758</Doi>
+<AuthorList>Jack Bauer, Kiefer Sutherland</AuthorList>
+<Title>Quantitative Risk Assessment of Norovirus Transmission in Food Establishments:
+    Evaluating the Impact of Intervention Strategies and Food Employee Behavior on
+    the Risk Associated with Norovirus in Foods.
+</Title>
+<Abstract>
+    This research looks at the work of Margaret C. Anderson, the editor of the
+    Little Review. The review published first works by Sherwood Anderson, James
+    Joyce, Wyndham Lewis, and Ezra Pound. This research draws upon mostly primary
+    sources including memoirs, published letters, and a complete collection of the
+    Little Review. Most prior research on Anderson focuses on her connection to the
+    famous writers and personalities that she published and associated with. This
+    focus undermines her role as the dominant creative force behind one of the most
+    influential little magazines published in the 20th Century. This case example
+    shows how little magazine publishing is arguably a literary art.
+</Abstract>
+<Status>Accepted</Status>
+<Website>https://nature.com</Website>
+<Comment>publisher demands edits</Comment>
 \end{lstlisting}
 
 \end{document}
