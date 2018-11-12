@@ -62,7 +62,6 @@ The primitive data types used in RAKIP-ML are taken from the XML Schema 1.0 incl
 Every RAKIP model involves four main metadata components: general information, scope, data background and model math. A RAKIP-ML document has one model with these components.
 
 \section{Common types}
-...
 
 \subsection{Assay}
 
@@ -661,6 +660,66 @@ The components used when carrying out this protocol.
 <ProtocolParametersName>Parameter 1</ProtocolParametersName>
 <ProtocolComponentsName>windows pc</ProtocolComponentsName>
 <ProtocolComponentsType>hardware</ProtocolComponentsType>
+\end{lstlisting}
+
+\subsection{StudySample}
+
+\starttable
+    \R SampleName | string | 1 | 1
+    \R ProtocolOfSampleCollection | string | 1 | 1
+    \R SamplingStrategy | string | 0 | 1
+    \R TypeOfSamplingProgram | string | 0 | 1
+    \R SamplingMethod | string | 0 | 1
+    \R SamplingPlan | string | 1 | 1
+    \R SamplingWeight | string | 1 | 1
+    \R SamplingSize | string | 1 | 1
+    \R LotSizeUnit | string | 0 | 1
+    \R SamplingPoint | string | 1 | 1
+\stoptable
+
+\paragraph{SampleName}
+An unambiguous ID given to the samples used in the assay.
+
+\paragraph{ProtocolOfSampleCollection}
+Additional protocol for sample and sample collection. Corresponds to the Protocol REF in ISA.
+
+\paragraph{SamplingStrategy}
+Sampling strategy (ref. EUROSTAT - Typology of sampling strategy, version of July 2009).
+
+\paragraph{TypeOfSamplingProgram}
+Indicate the type of programm for which the samples have been collected. .
+
+\paragraph{SamplingMethod}
+Sampling method used to take the sample.
+
+\paragraph{SamplingPlan}
+description of data collection technique: stratified or complex sampling (several stages).
+
+\paragraph{SamplingWeight}
+description of the method employed to compute sampling weight (nonresponse-adjusted weight).
+
+\paragraph{SamplingSize}
+number of units, full participants, partial participants, eligibles, not eligible, unresolved (eligibility status not resolved)….
+
+\paragraph{LotSizeUnit}
+Unit in which the lot size is expressed.
+
+\paragraph{SamplingPoint}
+Point in the food chain where the sample was taken. (Doc. ESTAT/F5/ES/155 ``Data dictionary of activities of the establishments'').
+
+\begin{lstlisting}[language=RAKIP, caption={Example of StudySample}]
+<SampleName>Sample 1</SampleName>
+<ProtocolOfSampleCollection>SampleID_1</ProtocolOfSampleCollection>
+<SamplingStrategy>Convenient sampling</SamplingStrategy>
+<TypeOfSamplingProgram>Diet study</TypeOfSamplingProgram>
+<SamplingMethod>According to Reg 152/2009</SamplingMethod>
+<SamplingPlan>Random sampling</SamplingPlan>
+<SamplingWeight>description of the method employed to compute sampling
+    weight (nonresponse-adjusted weight)
+</SamplingWeight>
+<SamplingSize>10000.0</SamplingSize>
+<LotSizeUnit>log10(CFU/25g)</LotSizeUnit>
+<SamplingPoint>Catering</SamplingPoint>
 \end{lstlisting}
 
 \section{GeneralInformation}
