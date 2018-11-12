@@ -2,6 +2,7 @@
 
 \usepackage{color}
 \usepackage{listings}
+\usepackage[utf8]{inputenc}
     
 % Macros for primitive XML types
 \newcommand{\booleantype}{\textbf{boolean}}
@@ -39,7 +40,7 @@
     \hline
 }
 \def\stoptable{%
- \hline\endtabular
+    \hline \endtabular
 }
 \def\R #1|#2|#3|#4{ #1&#2&#3&#4 \\}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -284,7 +285,7 @@ Defines the impact of the specific process on the hazard
     \R Subject | string | 0 | 1
     \R Distribution | string | 0 | 1
     \R Value | string | 0 | 1
-    \R Reference | Reference | 0 | unbounded
+    \R Reference | Reference | 0 | *
     \R VariabilitySubject | string | 0 | 1
     \R MinValue | string | 0 | 1
     \R MaxValue | string | 0 | 1
@@ -360,6 +361,76 @@ Error of the parameter value.
 <Error>0.5</Error>
 \end{lstlisting}
 
+\subsection{PopulationGroup}
+
+\starttable
+    \R Name | string | 1 | 1
+    \R TargetPopulation | string | 0 | 1
+    \R PopulationSpan | string | 0 | *
+    \R PopulationDescription | string | 0 | *
+    \R PopulationAge | string | 0 | *
+    \R PopulationGender | string | 0 | 1
+    \R BMI | string | 0 | *
+    \R SpecialDietGroups | string | 0 | *
+    \R PatternConsumption | string | 0 | *
+    \R Region | string | 0 | *
+    \R Country | string | 0 | *
+    \R PopulationRiskFactor | string | 0 | *
+    \R Season | string | 0 | *
+\stoptable
+
+\paragraph{Name}
+Name of the population for which the model or data applies
+
+\paragraph{TargetPopulation}
+population of individual that we are interested in describing and making statistical inferences about
+
+\paragraph{PopulationSpan}
+Temporal information on the exposure duration
+
+\paragraph{PopulationDescription}
+Description of the population for which the model applies (demographic and socio-economic characteristics for example). Background information that are needed in the data analysis phase: size of household, education level, employment status, professional category, ethnicity, etc.
+
+\paragraph{PopulationAge}
+describe the range of age or group of age
+
+\paragraph{PopulationGender}
+describe the percentage of gender
+
+\paragraph{BMI}
+describe the range of BMI or class of BMI or BMI mean
+
+\paragraph{SpecialDietGroups}
+sub-population with special diets (vegetarians, diabetics, group following special ethnic diets)
+
+\paragraph{PatternConsumption}
+describe the consumption of different food items: frequency, portion size
+
+\paragraph{Region}
+Spatial information (area) on which the population group of the model or data applies
+
+\paragraph{Country}
+Country on which the population group of the model or data applies
+
+\paragraph{PopulationRiskFactor}
+population risk factor that may influence the outcomes of the study, confounder should be included
+
+\paragraph{Season}
+distribution of surveyed people according to the season (influence consumption pattern)
+
+\begin{lstlisting}[language=RAKIP, caption={Example of PopulationGroup}]
+<Name>human consumer, no age specification</Name>
+<TargetPopulation>seniors</TargetPopulation>
+<PopulationDescription>80% are considered susceptible to infection</PopulationDescription>
+<PopulationGender>50% male</PopulationGender>
+<BMI>18.5 - 24.9</BMI>
+<SpecialDietGroups>love cake</SpecialDietGroups>
+<Region>Madrid</Region>
+<Country>Spain</Country>
+<PopulationRiskFactor>low physical activity</PopulationRiskFactor>
+<Season>spring</Season>
+\end{lstlisting}
+
 \section{GeneralInformation}
 
 \begin{tabular}{|l|c|c|c|}
@@ -369,14 +440,14 @@ Error of the parameter value.
     Name & string & 1 & 1 \\
     Source & string & 0 & 1\\
     Identifier & string & 1 & 1 \\
-    Author & Contact & 0 & unbounded \\
+    Author & Contact & 0 & * \\
     Creator & Contact & 1 & 1 \\
     CreationDate & date & 1 & 1 \\
-    ModificationDate & date & 0 & unbounded \\
+    ModificationDate & date & 0 & * \\
     Rights* & string & 1 & 1 \\
     Available & string & 0 & 1 \\
     Format & string & 0 & 1 \\
-    Reference & Reference & 1 & unbounded \\
+    Reference & Reference & 1 & * \\
     Language & string & 0 & 1 \\
     Software & string & 0 & 1 \\
     LanguageWrittenIn & string & 0 & 1 \\
