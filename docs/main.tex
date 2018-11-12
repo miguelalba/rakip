@@ -575,6 +575,94 @@ Country on which the model or data applies.
 <Country>Germany</Country>
 \end{lstlisting}
 
+\subsection{Study}
+
+\starttable
+    \R Identifier | string | 0 | 1
+    \R Title | string | 1 | 1
+    \R Description | string | 0 | 1
+    \R DesignType | string | 0 | 1
+    \R AssayMeasurementType | string | 0 | 1
+    \R AssayTechnologyType | string | 0 | 1
+    \R AssayTechnologyPlatform | string | 0 | 1
+    \R AcreditationProcedureForTheAssayTechnology | string | 0 | 1
+    \R ProtocolName | string | 0 | 1
+    \R ProtocolType | string | 0 | 1
+    \R ProtocolDescription | string | 0 | 1
+    \R ProtocolURI | string | 0 | 1
+    \R ProtocolParametersName | string | 0 | 1
+    \R ProtocolComponentsName | string | 0 | 1
+    \R ProtocolComponentsType | string | 0 | 1
+\stoptable
+
+\paragraph{Identifier}
+A user defined identifier for the study
+
+\paragraph{Title}
+A title for the Study.
+
+\paragraph{Description}
+A brief description of the study aims.
+
+\paragraph{DesignType}
+The type of study design being employed.
+
+\paragraph{AssayMeasurementType}
+The measurement being observed in this assay.
+
+\paragraph{AssayTechnologyType}
+The technology being employed to observe this measurement.
+
+\paragraph{AssayTechnologyPlatform}
+The technology platform used.
+
+\paragraph{AccreditationProcedureForTheAssayTechnology}
+Accreditation procedure for the analytical method used.
+
+\paragraph{ProtocolName}
+The name of the protocol, e.g.Extraction Protocol.
+
+\paragraph{ProtocolType}
+The type of the protocol, preferably coming from an Ontology, e.g. Extraction Protocol.
+
+\paragraph{ProtocolDescription}
+A description of the Protocol.
+
+\paragraph{ProtocolURI}
+A URI to link out to a publication, web page, etc. describing the protocol.
+
+\paragraph{ProtocolParametersName}
+The parameters used when executing this protocol.
+
+\paragraph{ProtocolComponentsType}
+The components used when carrying out this protocol.
+
+\begin{lstlisting}[language=RAKIP, caption={Example of Study}]
+<Identifier>Study_Generic_Sheet_1</Identifier>
+<Title>Quantitative Risk Assessment of Norovirus Transmission in Food
+    Establishments: Evaluating the Impact of Intervention Strategies
+    and Food Employee Behavior on the Risk Associated with Norovirus
+    in Foods.
+</Title>
+<Description>This Study will show, wether the FSK Lab will correctly
+    read and run a generic and fully annotated model.
+</Description>
+<DesignType>Trial and Error</DesignType>
+<AssayMeasurementType>It works or it doesn't</AssayMeasurementType>
+<AssayTechnologyType>Anatomic-pathologic Tests</AssayTechnologyType>
+<AssayTechnologyPlatform>Orbital Platform</AssayTechnologyPlatform>
+<AccreditationProcedureForTheAssayTechnology>ISO/IEC17025
+</AccreditationProcedureForTheAssayTechnology>
+<ProtocolName>Extraction Protocol of FSK</ProtocolName>
+<ProtocolType>Extraction Protocol</ProtocolType>
+<ProtocolDescription>The protocol is definitely not made up</ProtocolDescription>
+<ProtocolURI>https://url-for-study-protocol-location.bfr.bund.de</ProtocolURI>
+<ProtocolVersion>version 1.0</ProtocolVersion>
+<ProtocolParametersName>Parameter 1</ProtocolParametersName>
+<ProtocolComponentsName>windows pc</ProtocolComponentsName>
+<ProtocolComponentsType>hardware</ProtocolComponentsType>
+\end{lstlisting}
+
 \section{GeneralInformation}
 
 \starttable
