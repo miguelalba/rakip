@@ -121,6 +121,94 @@ Example:
 <Organization>SHIELD</Organization>
 \end{lstlisting}
 
+% TODO: Hazard
+\subsection{Hazard}
+
+\begin{tabular}{|l|c|c|c|}
+    \hline
+    \textbf{Element} & \textbf{Type} & \textbf{Min. Occurrences} & \textbf{Max. Occurrences} \\
+    \hline
+    Type & string & 0 & 1 \\
+    Name & string & 1 & 1 \\
+    Description & string & 0 & 1 \\
+    Unit & string & 0 & 1 \\
+    AdverseEffect & string & 0 & 1 \\
+    SourceOfContamination & string & 0 & 1 \\
+    BenchmarkDose & string & 0 & 1 \\
+    MaximumResidueLimit & string & 0 & 1 \\
+    NoObservedAdverseAffectLevel & string & 0 & 1 \\
+    AcceptableOperatorExposureLevel & string & 0 & 1 \\
+    AcuteReferenceDose & string & 0 & 1 \\
+    AcceptableDailyIntake & string & 0 & 1 \\
+    IndSum & string & 0 & 1 \\
+    \hline
+\end{tabular}
+
+\paragraph{Type}
+General classification of the hazard for which the model or data applies.
+
+\paragraph{Name}
+Name of the hazard for which the model or data applies.
+
+\paragraph{Description}
+Description of the hazard for which the model or data applies.
+
+\paragraph{Unit}
+Unit of the hazard for which the model or data applies.
+
+\paragraph{AdverseEffect}
+Morbidity, mortality, origin.
+
+\paragraph{SourceOfContamination}
+Source of contamination, origin.
+
+\paragraph{BenchmarkDose}
+A dose or concentration that produces a predetermined change in response rate of an adverse effect (called the benchmark response or BMR) compared to background.
+
+\paragraph{MaximumResidueLimit}
+International regulations and permissible maximum residue levels in food and drinking water.
+
+\paragraph{NoObservedAdverseAffectLevel}
+Level of exposure of an organism, found by experiment or observation, at which there is no biologically or statistically significant increase in the frequency or severity of any adverse effects in the exposed population when compared to its appropriate control.
+
+\paragraph{LowestObservedAdverseAffectLevel}
+Lowest concentration or amount of a substance found by experiment or observation that causes an adverse alteration of morphology, function, capacity, growth, development, or lifespan of a target organism distinguished from normal organisms of the same species under defined conditions of exposure.
+
+\paragraph{AcceptableOperatorExposureLevel}
+Maximum amount of active substance to which the operator may be exposed without any adverse health effects. The AOEL is expressed as milligrams of the chemical per kilogram body weight of the operator.
+
+\paragraph{AcuteReferenceDose}
+An estimate (with uncertainty spanning perhaps an order of magnitude) of a daily oral exposure for an acute duration (24 hours or less) to the human population (including sensitive subgroups) that is likely to be without an appreciable risk of deleterious effects during a lifetime.
+
+\paragraph{AcceptableDailyIntake}
+Measure of amount of a specific substance in food or in drinking water tahta can be ingested (orally) on a daily basis over a lifetime without an appreciable health risk.
+
+\paragraph{IndSum}
+Define if the parameter reported is an individual residue/analyte, a summed residue definition or part of a sum a summed residue definition.
+
+Example:
+\begin{lstlisting}[basicstyle=\footnotesize]
+<Type>Organic contaminants</Type>
+<Name>Norovirus (Norwalk-like virus)</Name>
+<Description>norovirus is described as nast and hard to get rid
+of</Description>
+<Unit>CFU</Unit>
+<AdverseEffect>morbitity</AdverseEffect>
+<SourceOfContamination>sewage</SourceOfContamination>
+<MaximumResidueLimit>0.01 mg/kg</MaximumResidueLimit>
+<NoObservedAdverseAffectLevel>10 mg</NoObservedAdverseAffectLevel>
+<LowestObservedAdverseAffectLevel>40 mg</LowestObservedAdverseAffectLevel>
+<AcceptableOperatorExposureLevel>50 mg</AcceptableOperatorExposureLevel>
+<AcuteReferenceDose>80 mg</AcuteReferenceDose>
+<AcceptableDailyIntake>20 mg</AcceptableDailyIntake>
+\end{lstlisting}
+
+% TODO: Laboratory
+% \subsection{Laboratory}
+
+% TODO: ModelCategory
+% \subsection{ModelCategory}
+
 \section{GeneralInformation}
 
 \begin{tabular}{|l|c|c|c|}
