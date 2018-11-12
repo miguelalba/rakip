@@ -433,30 +433,26 @@ distribution of surveyed people according to the season (influence consumption p
 
 \section{GeneralInformation}
 
-\begin{tabular}{|l|c|c|c|}
-    \hline
-    \textbf{Element} & \textbf{Type} & \textbf{Min. Ocurrences} & \textbf{Max. Ocurrences} \\
-    \hline
-    Name & string & 1 & 1 \\
-    Source & string & 0 & 1\\
-    Identifier & string & 1 & 1 \\
-    Author & Contact & 0 & * \\
-    Creator & Contact & 1 & 1 \\
-    CreationDate & date & 1 & 1 \\
-    ModificationDate & date & 0 & * \\
-    Rights* & string & 1 & 1 \\
-    Available & string & 0 & 1 \\
-    Format & string & 0 & 1 \\
-    Reference & Reference & 1 & * \\
-    Language & string & 0 & 1 \\
-    Software & string & 0 & 1 \\
-    LanguageWrittenIn & string & 0 & 1 \\
-    ModelCategory & ModelCategory & 0 & 1 \\
-    Status & string & 0 & 1 \\
-    Objective & string & 0 & 1 \\
-    Description & string & 0 & 1 \\
-    \hline
-\end{tabular}
+\starttable
+    \R Name | string | 1 | 1
+    \R Source | string | 0 | 1
+    \R Identifier | string | 1 | 1
+    \R Author | Contact | 1 | 1
+    \R Creator | Contact | 1 | 1
+    \R CreationDate | date | 1 | 1
+    \R ModificationDate | date | 0 | *
+    \R Rights | string | 1 | 1
+    \R Available | string | 0 | 1
+    \R Format | string | 0 | 1
+    \R Reference | Reference | 1 | *
+    \R Language | string | 0 | 1
+    \R Software | string | 0 | 1
+    \R LanguageWrittenIn | string | 0 | 1
+    \R ModelCategory | ModelCategory | 0 | 1
+    \R Status | string | 0 | 1
+    \R Objective | string | 0 | 1
+    \R Description | string | 0 | 1
+\stoptable{arg}
 
 \paragraph{Name}
 Name given to the model or data.
