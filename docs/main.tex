@@ -722,6 +722,8 @@ Point in the food chain where the sample was taken. (Doc. ESTAT/F5/ES/155 ``Data
 <SamplingPoint>Catering</SamplingPoint>
 \end{lstlisting}
 
+\chapter{GenericModel}
+
 \section{GeneralInformation}
 
 \starttable
@@ -796,5 +798,106 @@ Objective of the model or data.
 
 \paragraph{Description}
 General description of the study, data or model.
+
+\section{Scope}
+
+\starttable
+\R Product | Product | 0 | *
+\R Hazard | Hazard | 0 | *
+\R PopulationGroup | PopulationGroup | 0 | *
+\R GeneralComment | string | 0 | 1
+\R TemporalInformation | string | 0 || 1
+\R SpatialInformation | SpatialInformation | 0 | 1
+\stoptable
+
+\subsection{Product}
+\starttable
+    \R Name | string | 1 | 1
+    \R Description | string | 0 | 1
+    \R Unit | string | 0 | 1
+    \R Method | string | 0 | 1
+    \R Packaging | string | 0 | 1
+    \R Treatment | string | 0 | 1
+    \R OriginCountry | string | 0 | 1
+    \R OriginArea | string | 0 | 1
+    \R FisheriesArea | string | 0 | 1
+    \R ProductionDate | date | 0 | 1
+    \R ExpiryDate | date | 0 | 1
+\stoptable
+
+\paragraph{Name}
+The product-matrix (animal, food product, matrix, lab media, etc.) for which the model or data applies
+
+\paragraph{Description}
+Description of the product-matrix (animal, food product, matrix, lab media, etc.) for which the model or data applies
+
+\paragraph{Unit}
+Units of the product-matrix for which the model or data applies
+
+\paragraph{Method}
+Type of production for the product/ matrix
+
+\paragraph{Packaging}
+Describe container or wrapper that holds the product/matrix. Common type of packaging: paper or plastic bags, boxes, tinplate or aluminium cans, plastic trays, plastic bottles, glass bottles or jars.
+
+\paragraph{Treatment}
+Used to characterise a product/matrix based on the treatment or processes applied to the product or any indexed ingredient.
+
+\paragraph{OriginCountry}
+Country of origin of the food/product (ISO 3166-1-alpha-2 country code).
+
+\paragraph{OriginArea}
+Area of origin of the food/product (Nomenclature of territorial units for statistics – NUTS – coding system valid only for EEA and Switzerland).
+
+\paragraph{FisheriesArea}
+Fisheries or aquaculture area specifying the origin of the sample (FAO Fisheries areas).
+
+\paragraph{ProductionDate}
+date of production of food/product
+
+\paragraph{ExpiryDate}
+date of expiry of food/product
+
+\section{DataBackground}
+
+\starttable
+    \R Study | Study | 0 | 1
+    \R StudySample | StudySample | 0 | *
+    \R DietaryAssessmentMethod | DietaryAssessmentMethod | 0 | *
+    \R Laboratory | Laboratory | 0 | *
+    \R Assay | Assay | 0 | *
+\stoptable
+
+\subsection{DietaryAssessmentMethod}
+
+\starttable
+    \R CollectionTool | string | 0 | 1
+    \R NumberOfNonConsecutiveOneDay | string | 0 | 1
+    \R SoftwareTool | string | 0 | 1
+    \R NumberOfFoodItems | string | 0 | 1
+    \R RecordTypes | string | 0 | 1
+    \R FoodDescriptors | string | 0 | 1
+\stoptable
+
+\section{ModelMath}
+
+\starttable
+    \R Parameter | Parameter | 1 | *
+    \R QualityMeasures | QualityMeasures | 0 | 1
+    \R ModelEquation | ModelEquation | 0 | 1
+    \R FittingProcedure | string | 0 | 1
+    \R Exposure | Exposure | 0  | 1
+    \R Event | string | 0 | 1
+\stoptable
+
+\subsection{Exposure}
+
+\starttable
+    \R Type | string | 1 | 1
+    \R UncertaintyEstimation | string | 0 | 1
+    \R MethodologicalTreatmentOfLeftCensoredData | string | 0 | *
+    \R LevelOfContaminationAfterLeftCensoredDataTreatment | string | 0 | *
+    \R Scenario | string | 0 | *
+\stoptable
 
 \end{document}
