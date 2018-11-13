@@ -284,6 +284,29 @@ Defines the impact of the specific process on the hazard
 <ModelClassComment>This Model Class is very special</ModelClassComment>
 \end{lstlisting}
 
+\subsection{ModelEquation}
+\label{class:ModelEquation}
+
+\starttable
+    \R Name | string | 1 | 1
+    \R Class | string | 0 | 1
+    \R ModelEquation | string | 1 | 1
+    \R Reference | string | 1 | 1
+    \R ModelHypothesis | string | 0 | *
+\stoptable
+
+\paragraph{Name}
+A name given to the model equation
+
+\paragraph{Class}
+Information on that helps to categorize model equations
+
+\paragraph{ModelEquation}
+The pointer to the file that holds the software code (e.g. R-script)
+
+\paragraph{Reference}
+Information on the source, where the equation has been extracted from - if available
+
 \subsection{Parameter}
 \label{class:Parameter}
 
@@ -914,7 +937,7 @@ use foodex2 facets
 \starttable
     \R Parameter | \classlink{Parameter} | 1 | *
     \R QualityMeasures | \classlink{QualityMeasures} | 0 | 1
-    \R ModelEquation | ModelEquation | 0 | 1
+    \R ModelEquation | \classlink{ModelEquation} | 0 | 1
     \R FittingProcedure | string | 0 | 1
     \R Exposure | Exposure | 0  | 1
     \R Event | string | 0 | 1
