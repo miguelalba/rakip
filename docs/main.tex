@@ -159,6 +159,31 @@ Indicate the expanded uncertainty (usually 95\% confidence interval) value assoc
 <Organization>SHIELD</Organization>
 \end{lstlisting}
 
+\subsection{Exposure}
+\label{class:Exposure}
+\starttable
+    \R Type | string | 1 | 1
+    \R UncertaintyEstimation | string | 0 | 1
+    \R MethodologicalTreatmentOfLeftCensoredData | string | 0 | *
+    \R LevelOfContaminationAfterLeftCensoredDataTreatment | string | 0 | *
+    \R Scenario | string | 0 | *
+\stoptable
+
+\paragraph{Type}
+Type of the exposure
+
+\paragraph{UncertaintyEstimation}
+Analysis to estimate uncertainty
+
+\paragraph{MethodologicalTreatmentOfLeftCensoredData}
+describe the mathematical method to replace left-censored data: recommandation of WHO (2013), distribution or ohters
+
+\paragraph{LevelOfContaminationAfterLeftCensoredDataTreatment}
+describe the range of of the level of contamination after left censored data treatment
+
+\paragraph{Scenario}
+describe the different scenario of exposure assessment
+
 \subsection{Hazard}
 \label{class:Hazard}
 
@@ -939,33 +964,8 @@ use foodex2 facets
     \R QualityMeasures | \classlink{QualityMeasures} | 0 | 1
     \R ModelEquation | \classlink{ModelEquation} | 0 | 1
     \R FittingProcedure | string | 0 | 1
-    \R Exposure | Exposure | 0  | 1
+    \R Exposure | \classlink{Exposure} | 0  | 1
     \R Event | string | 0 | 1
 \stoptable
-
-\subsection{Exposure}
-
-\starttable
-    \R Type | string | 1 | 1
-    \R UncertaintyEstimation | string | 0 | 1
-    \R MethodologicalTreatmentOfLeftCensoredData | string | 0 | *
-    \R LevelOfContaminationAfterLeftCensoredDataTreatment | string | 0 | *
-    \R Scenario | string | 0 | *
-\stoptable
-
-\paragraph{Type}
-Type of the exposure
-
-\paragraph{UncertaintyEstimation}
-Analysis to estimate uncertainty
-
-\paragraph{MethodologicalTreatmentOfLeftCensoredData}
-describe the mathematical method to replace left-censored data: recommandation of WHO (2013), distribution or ohters
-
-\paragraph{LevelOfContaminationAfterLeftCensoredDataTreatment}
-describe the range of of the level of contamination after left censored data treatment
-
-\paragraph{Scenario}
-describe the different scenario of exposure assessment
 
 \end{document}
