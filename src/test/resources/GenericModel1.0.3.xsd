@@ -76,6 +76,18 @@
         </sequence>
     </complexType>
 
+    <complexType name="ModelEquation">
+        <sequence>
+            <element name="Name" type="string"/>
+            <element name="Class" type="string" minOccurs="0"/>
+            <element name="ModelEquation" type="string"/>
+            <element name="Reference" type="tns:Reference"
+                     minOccurs="0" maxOccurs="unbounded"/>
+            <element name="ModelHypothesis" type="string"
+                     minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
     <complexType name="ModelCategory">
         <sequence>
             <element name="ModelClass" type="string"/>
@@ -403,19 +415,7 @@
                                     <sequence>
                                         <element name="Parameter" type="tns:Parameter" maxOccurs="unbounded"/>
                                         <element name="QualityMeasures" type="tns:QualityMeasures" minOccurs="0"/>
-                                        <element name="ModelEquation" minOccurs="0">
-                                            <complexType>
-                                                <sequence>
-                                                    <element name="Name" type="string"/>
-                                                    <element name="Class" type="string" minOccurs="0"/>
-                                                    <element name="ModelEquation" type="string"/>
-                                                    <element name="Reference" type="tns:Reference"
-                                                             minOccurs="0" maxOccurs="unbounded"/>
-                                                    <element name="ModelHypothesis" type="string"
-                                                             minOccurs="0" maxOccurs="unbounded"/>
-                                                </sequence>
-                                            </complexType>
-                                        </element>
+                                        <element name="ModelEquation" type="tns:ModelEquation" minOccurs="0" />
                                         <element name="FittingProcedure" type="string" minOccurs="0"/>
                                         <element name="Exposure" minOccurs="0">
                                             <complexType>
@@ -498,19 +498,7 @@
                                     <sequence>
                                         <element name="Parameter" type="tns:Parameter" maxOccurs="unbounded"/>
                                         <element name="QualityMeasures" type="tns:QualityMeasures" minOccurs="0"/>
-                                        <element name="ModelEquation" minOccurs="0">
-                                            <complexType>
-                                                <sequence>
-                                                    <element name="Name" type="string"/>
-                                                    <element name="Class" type="string" minOccurs="0"/>
-                                                    <element name="ModelEquation" type="string"/>
-                                                    <element name="Reference" type="tns:Reference"
-                                                             minOccurs="0" maxOccurs="unbounded"/>
-                                                    <element name="ModelHypothesis" type="string"
-                                                             minOccurs="0" maxOccurs="unbounded"/>
-                                                </sequence>
-                                            </complexType>
-                                        </element>
+                                        <element name="ModelEquation" type="tns:ModelEquation" minOccurs="0" />
                                         <element name="FittingProcedure" type="string" minOccurs="0"/>
                                         <element name="Exposure" minOccurs="0">
                                             <complexType>
