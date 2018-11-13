@@ -41,6 +41,21 @@
         </sequence>
     </complexType>
 
+    <complexType name="Exposure">
+        <sequence>
+            <element name="Type" type="string"/>
+            <element name="UncertaintyEstimation" type="string"
+                     minOccurs="0"/>
+            <element name="MethodologicalTreatmentOfLeftCensoredData"
+                     type="string" minOccurs="0" maxOccurs="unbounded"/>
+            <element
+                    name="LevelOfContaminationAfterLeftCensoredDataTreatment"
+                    type="string" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="Scenario" type="string" minOccurs="0"
+                     maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
     <complexType name="Hazard">
         <sequence>
             <element name="Type" type="string" minOccurs="0"/>
@@ -417,22 +432,7 @@
                                         <element name="QualityMeasures" type="tns:QualityMeasures" minOccurs="0"/>
                                         <element name="ModelEquation" type="tns:ModelEquation" minOccurs="0" />
                                         <element name="FittingProcedure" type="string" minOccurs="0"/>
-                                        <element name="Exposure" minOccurs="0">
-                                            <complexType>
-                                                <sequence>
-                                                    <element name="Type" type="string"/>
-                                                    <element name="UncertaintyEstimation" type="string"
-                                                             minOccurs="0"/>
-                                                    <element name="MethodologicalTreatmentOfLeftCensoredData"
-                                                             type="string" minOccurs="0" maxOccurs="unbounded"/>
-                                                    <element
-                                                            name="LevelOfContaminationAfterLeftCensoredDataTreatment"
-                                                            type="string" minOccurs="0" maxOccurs="unbounded"/>
-                                                    <element name="Scenario" type="string" minOccurs="0"
-                                                             maxOccurs="unbounded"/>
-                                                </sequence>
-                                            </complexType>
-                                        </element>
+                                        <element name="Exposure" type="tns:Exposure" minOccurs="0"/>
                                         <element name="Event" type="string" minOccurs="0"/>
                                     </sequence>
                                 </complexType>
@@ -500,22 +500,7 @@
                                         <element name="QualityMeasures" type="tns:QualityMeasures" minOccurs="0"/>
                                         <element name="ModelEquation" type="tns:ModelEquation" minOccurs="0" />
                                         <element name="FittingProcedure" type="string" minOccurs="0"/>
-                                        <element name="Exposure" minOccurs="0">
-                                            <complexType>
-                                                <sequence>
-                                                    <element name="Type" type="string"/>
-                                                    <element name="UncertaintyEstimation" type="string"
-                                                             minOccurs="0"/>
-                                                    <element name="MethodologicalTreatmentOfLeftCensoredData"
-                                                             type="string" minOccurs="0" maxOccurs="unbounded"/>
-                                                    <element
-                                                            name="LevelOfContaminationAfterLeftCensoredDataTreatment"
-                                                            type="string" minOccurs="0" maxOccurs="unbounded"/>
-                                                    <element name="Scenario" type="string" minOccurs="0"
-                                                             maxOccurs="unbounded"/>
-                                                </sequence>
-                                            </complexType>
-                                        </element>
+                                        <element name="Exposure" type="tns:Exposure" minOccurs="0" />
                                         <element name="Event" type="string" minOccurs="0"/>
                                     </sequence>
                                 </complexType>
