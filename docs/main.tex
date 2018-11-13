@@ -1,9 +1,18 @@
 \documentclass[a4paper]{report}
 
 \usepackage{color}
+\usepackage{hyperref}
 \usepackage{listings}
 \usepackage[utf8]{inputenc}
-    
+
+% Configure links
+\hypersetup{
+    colorlinks=true
+}
+
+% Macros for class link. Every class has a label with pattern: class:<Class name>
+\newcommand{\classlink}[1]{\hyperref[class:#1]{#1}}
+
 % Macros for primitive XML types
 \newcommand{\booleantype}{\textbf{boolean}}
 \newcommand{\datetype}{\textbf{date}}
@@ -64,6 +73,7 @@ Every RAKIP model involves four main metadata components: general information, s
 \section{Common types}
 
 \subsection{Assay}
+\label{class:Assay}
 
 \starttable
     \R Name | string | 1 | 1
@@ -117,6 +127,7 @@ Indicate the expanded uncertainty (usually 95\% confidence interval) value assoc
 \end{lstlisting}
 
 \subsection{Contact}
+\label{class:Contact}
 
 \starttable
     \R Title | string | 0 | 1
@@ -149,6 +160,7 @@ Indicate the expanded uncertainty (usually 95\% confidence interval) value assoc
 \end{lstlisting}
 
 \subsection{Hazard}
+\label{class:Hazard}
 
 \starttable
     \R Type | string | 0 | 1
@@ -225,6 +237,7 @@ of</Description>
 \end{lstlisting}
 
 \subsection{Laboratory}
+\label{class:Laboratory}
 
 \starttable
     \R Accreditation | string | 0 | 1
@@ -248,6 +261,7 @@ Country where the laboratory is placed. (ISO 3166-1-alpha-2).
 \end{lstlisting}   
 
 \subsection{ModelCategory}
+\label{class:ModelCategory}
 
 \starttable
     \R ModelClass | string | 1 | 1
@@ -271,6 +285,7 @@ Defines the impact of the specific process on the hazard
 \end{lstlisting}
 
 \subsection{Parameter}
+\label{class:Parameter}
 
 \starttable
     \R Id | string | 1 | 1
@@ -284,7 +299,7 @@ Defines the impact of the specific process on the hazard
     \R Subject | string | 0 | 1
     \R Distribution | string | 0 | 1
     \R Value | string | 0 | 1
-    \R Reference | Reference | 0 | *
+    \R Reference | \classlink{Reference} | 0 | *
     \R VariabilitySubject | string | 0 | 1
     \R MinValue | string | 0 | 1
     \R MaxValue | string | 0 | 1
@@ -361,6 +376,7 @@ Error of the parameter value.
 \end{lstlisting}
 
 \subsection{PopulationGroup}
+\label{class:PopulationGroup}
 
 \starttable
     \R Name | string | 1 | 1
@@ -431,6 +447,7 @@ distribution of surveyed people according to the season (influence consumption p
 \end{lstlisting}
 
 \subsection{QualityMeasures}
+\label{class:QualityMeasures}
 
 \starttable
     \R SSE | double | 0 | 1
@@ -451,6 +468,7 @@ distribution of surveyed people according to the season (influence consumption p
 \end{lstlisting}
 
 \subsection{Reference}
+\label{class:Reference}
 
 \starttable
     \R IsReferenceDescription | boolean | 1 | 1
@@ -557,6 +575,7 @@ Publication comment.
 \end{lstlisting}
 
 \subsection{SpatialInformation}
+\label{class:SpatialInformation}
 
 \starttable
     \R Region | string | 0 | 1
@@ -575,6 +594,7 @@ Country on which the model or data applies.
 \end{lstlisting}
 
 \subsection{Study}
+\label{class:Study}
 
 \starttable
     \R Identifier | string | 0 | 1
@@ -663,6 +683,7 @@ The components used when carrying out this protocol.
 \end{lstlisting}
 
 \subsection{StudySample}
+\label{class:StudySample}
 
 \starttable
     \R SampleName | string | 1 | 1
@@ -730,18 +751,18 @@ Point in the food chain where the sample was taken. (Doc. ESTAT/F5/ES/155 ``Data
     \R Name | string | 1 | 1
     \R Source | string | 0 | 1
     \R Identifier | string | 1 | 1
-    \R Author | Contact | 1 | 1
-    \R Creator | Contact | 1 | 1
+    \R Author | \classlink{Contact} | 1 | 1
+    \R Creator | \classlink{Contact} | 1 | 1
     \R CreationDate | date | 1 | 1
     \R ModificationDate | date | 0 | *
     \R Rights | string | 1 | 1
     \R Available | string | 0 | 1
     \R Format | string | 0 | 1
-    \R Reference | Reference | 1 | *
+    \R Reference | \classlink{Reference} | 1 | *
     \R Language | string | 0 | 1
     \R Software | string | 0 | 1
     \R LanguageWrittenIn | string | 0 | 1
-    \R ModelCategory | ModelCategory | 0 | 1
+    \R ModelCategory | \classlink{ModelCategory} | 0 | 1
     \R Status | string | 0 | 1
     \R Objective | string | 0 | 1
     \R Description | string | 0 | 1
@@ -803,11 +824,11 @@ General description of the study, data or model.
 
 \starttable
 \R Product | Product | 0 | *
-\R Hazard | Hazard | 0 | *
-\R PopulationGroup | PopulationGroup | 0 | *
+\R Hazard | \classlink{Hazard} | 0 | *
+\R PopulationGroup | \classlink{PopulationGroup} | 0 | *
 \R GeneralComment | string | 0 | 1
 \R TemporalInformation | string | 0 || 1
-\R SpatialInformation | SpatialInformation | 0 | 1
+\R SpatialInformation | \classlink{SpatialInformation} | 0 | 1
 \stoptable
 
 \subsection{Product}
@@ -861,11 +882,11 @@ date of expiry of food/product
 \section{DataBackground}
 
 \starttable
-    \R Study | Study | 0 | 1
-    \R StudySample | StudySample | 0 | *
+    \R Study | \classlink{Study} | 0 | 1
+    \R StudySample | \classlink{StudySample} | 0 | *
     \R DietaryAssessmentMethod | DietaryAssessmentMethod | 0 | *
-    \R Laboratory | Laboratory | 0 | *
-    \R Assay | Assay | 0 | *
+    \R Laboratory | \classlink{Laboratory} | 0 | *
+    \R Assay | \classlink{Assay} | 0 | *
 \stoptable
 
 \subsection{DietaryAssessmentMethod}
@@ -882,8 +903,8 @@ date of expiry of food/product
 \section{ModelMath}
 
 \starttable
-    \R Parameter | Parameter | 1 | *
-    \R QualityMeasures | QualityMeasures | 0 | 1
+    \R Parameter | \classlink{Parameter} | 1 | *
+    \R QualityMeasures | \classlink{QualityMeasures} | 0 | 1
     \R ModelEquation | ModelEquation | 0 | 1
     \R FittingProcedure | string | 0 | 1
     \R Exposure | Exposure | 0  | 1
