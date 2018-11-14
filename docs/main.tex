@@ -968,4 +968,107 @@ use foodex2 facets
     \R Event | string | 0 | 1
 \stoptable
 
+\chapter{DoseResponseModel}
+
+\section{GeneralInformation}
+
+\starttable
+    \R ModelName | string | 1 | 1
+    \R Source | string | 0 | 1
+    \R Identifier | string | 0 | 1
+    \R Author | \classlink{Contact} | 0 | *
+    \R Creator | \classlink{Contact} | 1 | *
+    \R CreationDate | date | 1 | 1
+    \R ModificationDate | date | 0 | *
+    \R Rights | string | 1 | 1
+    \R Available | boolean | 0 | 1
+    \R Format | string | 0 | 1
+    \R Reference | \classlink{Reference} | 0 | *
+    \R Language | string | 0 | 1
+    \R Software | string | 0 | 1
+    \R LanguageWrittenIn | string | 1 | 1
+    \R ModelCategory | \classlink{ModelCategory} | 0 | 1
+    \R Status | string | 0 | 1
+    \R Objective | string | 0 | 1
+    \R Description | string | 0 | 1
+\stoptable
+
+\paragraph{ModelName}
+Name given to the model.
+
+\paragraph{Source}
+Related resource from which the described resource is derived.
+
+\paragraph{Identifier}
+Unambiguous ID given to the model.
+
+\paragraph{Author}
+Person who generated the model code originally.
+
+\paragraph{Creator}
+Person or institution who contributed to the encoding of the model in its present form by creating the model file.
+
+\paragraph{CreationDate}
+Temporal information on the model creation date.
+
+\paragraph{ModificationDate}
+Temporal information on the last modification of the model.
+
+\paragraph{Rights}
+Information on rights held in an over the resource.
+
+\paragraph{Available}
+Availability of model.
+
+\paragraph{Format}
+Form of the model (file extension).
+
+\paragraph{Language}
+Language of the resource (some data or reports can be available in French language for example).
+
+\paragraph{Software}
+Program in which the model has been implemented.
+
+\paragraph{LanguageWrittenIn}
+Language used to write the model, e.g. R or MatLab
+
+\paragraph{Status}
+Curation status of the model.
+
+\paragraph{Objective}
+Objective of the model.
+
+\paragraph{Description}
+General description of the model.
+
+\section{Scope}
+
+\starttable
+    \R Hazard | string | 1 | *
+    \R PopulationGroup | \classlink{PopulationGroup} | 0 | *
+    \R GeneralComment | string | 0 | 1
+    \R TemporalInformation | string | 0 | 1
+    \R SpatialInformation | \classlink{SpatialInformation} | 0 | 1
+\stoptable
+
+\section{DataBackground}
+
+\starttable
+    \R Study | \classlink{Study} | 1 | 1
+    \R StudySample | \classlink{StudySample} | 0  | *
+    \R Laboratory | \classlink{Laboratory} | 0 | *
+    \R Assay | \classlink{Assay} | 0 | *
+\stoptable
+
+\section{ModelMath}
+
+\starttable
+    \R Parameter | \classlink{Parameter} | 1 | *
+    \R QualityMeasures | \classlink{QualityMeasures} | 0 | 1
+    \R ModelEquation | \classlink{ModelEquation} | 0 | 1
+    \R FittingProcedure | string | 0 | 1
+    \R Exposure | \classlink{Exposure} | 0 | 1
+    \R Event | string | 0 | 1
+\stoptable
+
 \end{document}
