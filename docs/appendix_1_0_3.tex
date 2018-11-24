@@ -1,0 +1,895 @@
+\chapter{RAKIP 1.0.3}
+
+In FSKML the implementation of the metadata is based on EMF and the following simple EMF types:
+* *EString*
+* *EBoolean*
+* *EDate*
+* *EInt*
+
+\section{General structure}
+
+Every RAKIP model involves four main metadata components: general information, scope, data background and model math. In FSKML a JSON object contains four key-value pairs with the classes described in this document.
+
+\keyClassTable
+    generalInformation & GeneralInformation \\
+    scope & Scope \\
+    dataBackground & DataBackground \\
+    modelMath & ModelMath \\
+\stoptable
+
+This translate to a JSON object with these four attributes:
+\begin{lstlisting}[caption={Example of GeneralInformation}, language=JSON]
+{
+      "generalInformation" : {},
+      "scope" : {},
+      "dataBackground" : {},
+      "modelMath" : {}
+}
+\end{lstlisting}
+
+% TODO: Add links to sections
+% TODO: Need to mention that they are sorted alphabetically
+FSKML defines a number of metadata classes:
+\begin{itemize}
+    \item Assay
+    \item Contact
+    \item DataBackground
+    \item DietaryAssessmentMethod
+    \item GeneralInformation
+    \item Hazard
+    \item Laboratory
+    \item ModelCategory
+    \item ModelMath
+    \item Parameter
+    \item ParameterClassification
+    \item ParameterType
+    \item PopulationGroup
+    \item Product
+    \item Reference
+    \item PublicationType
+    \item SpatialInformation
+    \item Scope
+    \item Study
+    \item StudySample
+\end{itemize}
+
+\section{Assay}
+
+\propertyTypeCardinalityTable
+    assayName & EString & 1..1 \\
+    assayDescription & EString & 0..1 \\
+    percentageOfMoisture & EString & 0..1 \\
+    percentageOfFat & EString & 0..1 \\
+    limitOfDetection & EString & 0..1 \\
+    limitOfQuantification & EString & 0..1 \\
+    leftCensoredData & Estring & 0..1 \\
+    rangeOfContamination & EString & 0..1 \\
+    uncertaintyValue & EString & 0..1 \\
+\stoptable
+
+\begin{lstlisting}[caption={Example of GeneralInformation}, language=JSON]
+{
+      "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//Assay",
+      "assayName" : "Bradford protein assay",
+      "assayDescription" : "spectroscopic analytical procedure ...",
+      "limitOfDetection" : "30-300",
+      "limitOfQuantification" : "5000 - 8000",
+      "rangeOfContamination" : "500-4000"
+}
+\end{lstlisting}
+
+\subsection{Mapping to RAKIP Assay}
+
+\mapTable
+    Assay name & assayName \\
+    Assay description & assayDescription \\
+    Percentage of moisture & percentageOfMoisture \\
+    Percentage of fat & percentageOfFat \\
+    Limit of detection & limitOfDetection \\
+    Limit of quantification & limitOfQuantification \\
+    Left-censored data & leftCensoredData \\
+    Range of contamination & rangeOfContamination \\
+    Uncertainty value & uncertaintyValue \\
+\stoptable
+
+\section{Contact}
+
+\propertyTypeCardinalityTable
+    title & EString & 0..1 \\
+    familyName & EString & 0..1 \\
+    givenName & EString & 0..1 \\
+    email & EString & 1..1 \\
+    telephone & EString & 0..1 \\
+    streetAddress & EString & 0..1 \\
+    country & EString & 0..1 \\
+    city & EString & 0..1 \\
+    zipCode & EString & 0..1 \\
+    region & EString & 0..1 \\
+    timeZone & EString & 0..1 \\
+    gender & EString & 0..1 \\
+    note & EString & 0..1 \\
+    organization & EString & 0..1 \\
+\stoptable
+
+\begin{lstlisting}[caption={Example of Contact}, language=JSON]
+{
+      "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//Contact",
+      "title" : "Dr.",
+      "familyName" : "Romanov",
+      "givenName" : "Natalia",
+      "email" : "black_widow@marvel.com",
+      "telephone" : "030 12345",
+      "streetAddress" : "Nahmitzer Damm 40",
+      "country" : "Russian Federation",
+      "city" : "Berlin",
+      "region" : "Berlin-Brandenburg",
+      "organization" : "SHIELD"
+}
+\end{lstlisting}
+
+\section{DataBackground}
+\propertyTypeCardinalityTable
+    study & Study & 1 \\
+    studySample & StudySample & 0 \\
+    dietaryAssessmentMethod & DietaryAssessmentMethod & 0 \\
+    laboratory & Laboratory & 0 \\
+    assay & Assay & 0 \\
+\stoptable
+
+\begin{lstlisting}[caption={Example of DataBackground}, language=JSON]
+{
+    "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//DataBackground",
+    "study" : { ... },
+    "studysample" : [...],
+    "dietaryassessmentmethod" : [...],
+    "laboratory" : [...],
+    "assay" : [...],
+}
+\end{lstlisting}
+
+\subsection{Mapping to RAKIP to DataBackground}
+
+\mapTable
+    Study & study \\
+    Study Sample & studySample \\
+    Dietary assessment method & dietaryAssessmentMethod \\
+    Laboratory & laboratory \\
+    Assay & assay \\
+\stoptable
+
+\section{DietaryAssessmentMethod}
+
+\propertyTypeCardinalityTable
+    collectionTool & EString & 0..1 \\
+    numberOfNonConsecutiveOneDay & EString & 0..1 \\
+    softwareTool & EString & 0..1 \\
+    numberOfFoodItems & EString & 0..1 \\
+    recordTypes & EString & 0..1 \\
+    foodDescriptors & EString & 0..1 \\
+\stoptable
+
+\begin{lstlisting}[caption={Example of DietaryAssessmentMethod}, language=JSON]
+{
+    "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//DietaryAssessmentMethod",
+    "collectionTool" : "food diaries",
+    "numberOfNonConsecutiveOneDay" : 5,
+    "softwareTool" : "FoodWorks",
+    "recordTypes" : "Mean of consumption",
+    "foodDescriptors" : "(Beet) Sugar"
+}
+\end{lstlisting}
+
+\subsection{Mapping to RAKIP DietaryAssessmentMethod}
+
+\mapTable
+    Methodological tool to collect data & collectionTool \\
+    Number of non-consecutive one-day & numberOfNonConsecutiveOneDay \\
+    Dietary software tool & softwareTool \\
+    Number of food items & numberOfFoodItems \\
+    Type of records & recordTypes \\
+    Food descriptors & foodDescriptors \\
+\stoptable
+
+\section{GeneralInformation}
+
+\propertyTypeCardinalityTable
+    name & EString & 1..1 \\
+    source & EString & 0..1 \\
+    identifier & EString & 1..1 \\
+    author & Contact & 1 \\
+    creators & Contact & 0 \\
+    creationDate & EDate & 1..1 \\
+    modificationDate & EDate & 0 \\
+    rights & EString & 1..1 \\
+    available & EBoolean & 0..1 \\
+    format & EString & 0..1 \\
+    reference & Reference & 1 \\
+    language & EString & 0..1 \\
+    software & EString & 0..1 \\
+    languageWrittenIn & EString & 0..1 \\
+    modelCategory & ModelCategory & 0 \\
+    status & EString & 0..1 \\
+    objective & EString & 0..1 \\
+    description & EString & 0..1 \\
+\stoptable
+
+\begin{lstlisting}[caption={Example of GeneralInformation}, language=JSON]
+{
+    "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//GeneralInformation",
+    "name" : "Toy Model for Testing Purposes",
+    "source" : "UNPUBLISHED STUDIES (EXPERIMENTS-OBSERVATIONS): Studies and surveys",
+    "identifier" : "Toy_Model_Generic_01",
+    "creationDate" : "2018-04-20T00:00:00",
+    "rights" : "Creative Commons Attribution-NonCommercial 4.0",
+    "format" : ".fskx",
+    "language" : "English",
+    "software" : "R",
+    "languageWrittenIn" : "R 3",
+    "status" : "Uncurated",
+    "objective" : "Development of a dose-response models for Norwalk virus/ norovirus",
+    "description" : "A norovirus dose response model is important for ...",
+    "modelCategory" : [...],
+    "creators" : [...],
+    "reference" : [...]
+}
+\end{lstlisting}
+
+\subsection{Mapping to RAKIP GeneralInformation}
+
+\mapTable
+    Study/Data/Model name & name \\
+    Source & source \\
+    Identifier & identifier \\
+    Author & author \\
+    Creator & creators \\
+    Creation date & creationDate \\
+    Last modified date & modificationDate \\
+    Rights & rights \\
+    Availability & available \\
+    URL & \\
+    Format & format \\
+    Reference & reference \\
+    Language & language \\
+    Software & software \\
+    Language written in & languageWrittenIn \\
+    Model category & modelCategory \\
+    Status & status \\
+    Objective & objective \\
+    Description & description \\
+\stoptable
+
+\section{Hazard}
+
+\propertyTypeCardinalityTable
+    hazardType & EString & 0..1 \\
+    hazardName & EString & 1..1 \\
+    hazardDescription & EString & 0..1 \\
+    hazardUnit & EString & 0..1 \\
+    adverseEffect & EString & 0..1 \\
+    sourceOfContamination & EString & 0..1 \\
+    benchmarkDose & EString & 0..1 \\
+    maximumResidueLimit & EString & 0..1 \\
+    noObservedAdverseAffectLevel & EString & 0..1 \\
+    lowestObservedAdverseAffectLevel & EString & 0..1 \\
+    acceptableOperatorExposureLevel & EString & 0..1 \\
+    acuteReferenceDose & EString & 0..1 \\
+    acceptableDailyIntake & Estring & 0..1 \\
+    hazardIndSum & EString & 0..1 \\
+\stoptable
+
+\begin{lstlisting}[caption={Example of Hazard}, language=JSON]
+{
+    "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//Hazard",
+    "hazardType" : "Organic contaminants",
+    "hazardName" : "norovirus (Norwalk-like virus)",
+    "hazardDescription" : "novovirus is described as nast and hard to get rid of",
+    "hazardUnit" : "CFU",
+    "adverseEffect" : "morbitity",
+    "sourceOfContamination" : "sewage",
+    "maximumResidueLimit" : "0.01 mg/kg",
+    "noObservedAdverseAffectLevel" : "10 mg",
+    "lowestObservedAdverseAffectLevel" : "40 mg",
+    "acceptableOperatorExposureLevel" : "50 mg",
+    "acuteReferenceDose" : "80 mg",
+    "acceptableDailyIntake" : "20 mg"
+}
+\end{lstlisting}
+
+\subsection{Mapping to RAKIP Hazard}
+
+\mapTable
+    Hazard type & hazardType \\
+    Hazard name & hazardName \\
+    Hazard description & hazardDescription \\
+    Hazard unit & hazardUnit \\
+    Adverse effect & adverseEffect \\
+    Source of contamination & sourceOfContamination \\
+    Benchmark Dose (BMD) & benchmarkDose \\
+    Maximum Residue Limit (MRL) & maximumResidueLimit \\
+    No Observed Adverse Effect Level (NOAEL) & noObservedAdverseAffectLevel \\
+    Lowest Observed Adverse Effect Level (LOAEL) & lowestObservedAdverseAffectLevel \\
+    Acceptabnle Operator Exposure Level (AOEL) & acceptableOperatorExposureLevel \\
+    Acute Reference Dose (ARfD) & acuteReferenceDose \\
+    Acceptable Daily Intake (ADI) & acceptableDailyIntake \\
+    Hazard ind/sum & hazardIndSum \\
+\stoptable
+
+\section{Laboratory}
+
+% | Property | Type | Cardinality |
+% | :------- | :--- | :---------: |
+
+\propertyTypeCardinalityTable
+    laboratoryAccreditation & StringObject & 0..1 \\
+    laboratoryName & EString & 0..1 \\
+    laboratoryCountry & EString & 0 \\
+\stoptable
+
+\begin{lstlisting}[caption={Example of Laboratory}, language=JSON]
+{
+      "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//Laboratory",
+      "laboratoryName" : "National High Magnetic Field Laboratory",
+      "laboratoryCountry" : "United States",
+      "laboratoryAccreditation" : [ {
+        "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//StringObject",
+        "value" : "Accredited"
+      }]
+}
+\end{lstlisting}
+
+\subsection{Mapping to RAKIP Laboratory}
+
+\mapTable
+    Laboratory accreditation & laboratoryAccreditation \\
+    Laboratory name & laboratoryName \\
+    Laboratory country & laboratoryCountry \\
+\stoptable
+
+% ## ModelCategory
+\section{ModelCategory}
+
+\propertyTypeCardinalityTable
+    modelClass & EString & 1 \\
+    modelSubClass & StringObject & 0 \\
+    modelClassComment & EString & 0..1 \\
+    basicProcess & EString & 0..1 \\
+\stoptable
+
+\begin{lstlisting}[caption={Example of Laboratory}, language=JSON]
+{
+    "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//ModelCategory",
+    "modelClass" : "Dose-response model",
+    "modelClassComment" : "This Model Class is very special"
+}
+\end{lstlisting}
+
+\subsection{Mapping to RAKIP ModelCategory}
+
+\mapTable
+    Model class & modelClass \\
+    Model Sub-Class & modelSubClass \\
+    Model Class comment & modelClassComment \\
+    Basic process & basicProcess \\
+\stoptable
+
+\section{ModelMath}
+
+\propertyTypeCardinalityTable
+    parameter & Parameter & 1 \\
+    qualityMeasures & StringObject & 0 \\
+    modelEquation & ModelEquation & 0 \\
+    fittingProcedure & EString & 0..1 \\
+    exposure & Exposure & 0 \\
+    event & StringObject & 0 \\
+\stoptable
+
+\begin{lstlisting}[caption={Example of ModelCategory}, language=JSON]
+{
+    "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//ModelMath",
+    "parameter" : [...],
+    "qualityMeasures" : [ {
+      "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//StringObject",
+      "value" : "{\"SSE\":0.0,\"MSE\":0.2,\"RMSE\":0.3,\"Rsquared\":0.9,\"AIC\":0.0,\"BIC\":1.0}"
+    } ]
+}
+\end{lstlisting}
+
+\subsection{Mapping to RAKIP ModelMath}
+
+\mapTable
+    Parameter / Factor / Input / Output / "Data column" & Parameter \\
+    Quality measures & qualityMeasures \\
+    Model equation & modelEquation \\
+    Fitting procedure & fittingProcedure \\
+    Exposure & exposure \\
+    Events & event \\
+\stoptable
+
+\section{Parameter}
+
+\propertyTypeCardinalityTable
+    parameterID & EString & 1..1 \\
+    parameterClassification & ParameterClassification & 1..1 \\
+    parameterName & EString & 1..1 \\
+    parameterDescription & EString & 0..1 \\
+    parameterUnit & EString & 1..1 \\
+    parameterUnitCategory & Estring & 0..1 \\
+    parameterDataType & ParameterType & 1..1 \\
+    parameterSource & EString & 0..1 \\
+    parameterSubject & EString & 0..1 \\
+    parameterDistribution & EString & 0..1 \\
+    parameterValue & EString & 0..1 \\
+    reference & Reference & 0 \\
+    parameterVariabilitySubject & EString & 0..1 \\
+    parameterValueMin & EString & 0..1 \\
+    parameterValueMax & EString & 0..1 \\
+    parameterError & EString & 0..1 \\
+\stoptable
+
+\subsection{Mapping to RAKIP Parameter}
+
+\mapTable
+    Parameter ID & parameterID \\
+    Parameter classification & parameterClassification \\
+    Parameter name & parameterName \\
+    Parameter description & parameterDescription \\
+    Parameter unit & parameterUnit \\
+    Parameter unit category & parameterUnitCategory \\
+    Parameter data type & parameterDataType \\
+    Parameter source & parameterSource \\
+    Parameter subject & parameterSubject \\
+    Parameter distribution & parameterDistribution \\
+    Parameter value & parameterValue \\
+    Parameter Reference & reference \\
+    Parameter variability subject & parameterVariabilitySubject \\
+    Parameter value min & parameterValueMin \\
+    Parameter value max & parameterValueMax \\
+    Parameter error & parameterError \\
+\stoptable
+
+\section{ParameterClassification}
+
+\tabular{|l|l|l|}
+    \hline
+    \textbf{Literal} & \textbf{Name} & \textbf{Value} \\
+    \hline
+    null & null & -1 \\
+    Constant & Constant & 0 \\
+    Input & Input & 1 \\
+    Output & Output & 2 \\
+    \hline
+\endtabular
+
+\section{ParameterType}
+
+\propertyTypeCardinalityTable
+    null & null & -1 \\
+    Integer & Integer & 0 \\
+    Double & Double & 1 \\
+    Number & Number & 2 \\
+    Date & Date & 3 \\
+    File & File & 4 \\
+    Boolean & Boolean & 5 \\
+    Vector[number] & VectorOfNumbers & 6 \\
+    Vector[string] & VectorOfStrings & 7 \\
+    Matrix[number,number] & MatrixOfNumbers & 8 \\
+    Matrix[string,string] & MatrixOfStrings & 9 \\
+    Object & Object & 10 \\
+    Other & Other & 11 \\
+    String & String & 12 \\
+\stoptable
+
+\begin{lstlisting}[caption={Example of Parameter}, language=JSON]
+{
+      "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//Parameter",
+      "parameterID" : "Dose_matrix",
+      "parameterClassification" : "Input",
+      "parameterName" : "Dose_matrix",
+      "parameterDescription" : "matrix with GEC NoV ...",
+      "parameterUnit" : "Others",
+      "parameterUnitCategory" : "Other",
+      "parameterDataType" : "Matrix[number,number]",
+      "parameterSource" : "Article",
+      "parameterSubject" : "Animal",
+      "parameterDistribution" : "Bernoulli 1",
+      "parameterValue" : "as.matrix(read.table(file =\"Dose_matrix.csv\"))",
+      "parameterVariabilitySubject" : "days",
+      "parameterValueMin" : "10000.0",
+      "parameterValueMax" : "0.0",
+      "parameterError" : "0.5"
+}
+\end{lstlisting}
+
+\section{PopulationGroup}
+
+\propertyTypeCardinalityTable
+    populationName & EString & 1..1 \\
+    targetPopulation & EString & 0..1 \\
+    populationSpan & StringObject & 0 \\
+    populationDescription & StringObject & 0 \\
+    populationAge & StringObject & 0 \\
+    populationGender & EString & 0..1 \\
+    bmi & StringObject & 0 \\
+    specialDietGroups & StringObject & 0 \\
+    patternConsumption & StringObject & 0 \\
+    region & StringObject & 0 \\
+    country & StringObject & 0 \\
+    populationRiskFactor & StringObject & 0 \\
+    season & StringObject & 0 \\
+\stoptable
+
+\begin{lstlisting}[caption={Example of PopulationGroup}, language=JSON]
+{
+    "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//PopulationGroup",
+    "populationName" : "human consumer, no age specification",
+    "targetPopulation" : "seniors",
+    "populationGender" : "50% male ",
+    "populationDescription" : [ {
+    "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//StringObject",
+    "value" : "80% are considered susceptible to infection"
+}
+\end{lstlisting}
+
+\subsection{Mapping of RAKIP PopulationGroup and FSKML PopulationGroup}
+
+\mapTable
+    Population name & populationName \\
+    Target population & targetPopulation \\
+    Population Span (years) & populationSpan \\
+    Population description & populationDescription \\
+    Population age & populationAge \\
+    Population gender & populationGender \\
+    BMI & bmi \\
+    Special diet groups & specialDietGroups \\
+    Pattern consumption & patternConsumption \\
+    Region & region \\
+    Country & country \\
+    Risk and population factors & populationRiskFactor \\
+    Season & season \\
+\stoptable
+
+\section{Product}
+
+\propertyTypeCardinalityTable
+    productName & EString & 1..1 \\
+    productDescription & EString & 0..1 \\
+    productUnit & EString & 1..1 \\
+    productionMethod & EString & 0..1 \\
+    packaging & EString & 0..1 \\
+    productTreatment & EString & 0..1 \\
+    originCountry & EString & 0..1 \\
+    originArea & EString & 0..1 \\
+    fisheriesArea & EString & 0..1 \\
+    productionDate & EDate & 0..1 \\
+    expiryDate & EDate & 0..1 \\
+\stoptable
+
+\begin{lstlisting}[caption={Example of Product}, language=JSON]
+{
+      "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//Product",
+      "productName" : "Lettuce",
+      "productDescription" : "fresh german lettuce",
+      "productUnit" : "g",
+      "productionMethod" : "Organic production",
+      "packaging" : "Packed",
+      "productTreatment" : "Freezing",
+      "originCountry" : "Germany",
+      "originArea" : "Aachen, Kreisfreie Stadt",
+      "fisheriesArea" : "Arctic Sea",
+      "productionDate" : "3911-10-30T00:00:00",
+      "expiryDate" : "3911-12-01T00:00:00"
+}
+\end{lstlisting}
+
+\subsection{Mapping of RAKIP Product and FSKML Product}
+
+\mapTable
+    Product/matrix name & productName \\
+    Product/matrix description & productDescription \\
+    Product/matrix unit & productUnit \\
+    Method of production & productionMethod \\
+    Packaging & packaging \\
+    Product treatment & productTreatment \\
+    Country of origin & originCountry \\
+    Area of origin & originArea \\
+    Fisheries area & fisheriesArea \\
+    Date of production & productionDate \\
+    Date of expiry & expiryDate \\
+\stoptable
+
+\section{Reference}
+
+\propertyTypeCardinalityTable
+    isReferenceDescription & EBoolean & 1..1 \\
+    publicationType & PublicationType & 0..1 \\
+    publicationDate & EDate & 0..1 \\
+    pmid & EString & 0..1 \\
+    doi & EString & 0..1 \\
+    authorList & EString & 0..1 \\
+    publicationTitle & EString & 1..1 \\
+    publicationAbstract & EString & 0..1 \\
+    publicationJournal & EString & 0..1 \\
+    publicationVolume & EInt & 0..1 \\
+    publicationIssue & EInt & 0..1 \\
+    publicationStatus & EString & 0..1 \\
+    publicationWebsite & EString & 0..1 \\
+    comment & EString & 0..1 \\
+\stoptable
+
+\subsection{Mapping of RAKIP Reference and FSKML Reference}
+
+\mapTable
+    $Is_reference_description?$ & isReferenceDescription \\
+    Publication type & publicationType \\
+    Publication year & publicationDate \\
+    PubMed ID & pmid \\
+    Publication DOI & doi \\
+    Publication Author List & authorList \\
+    Publication Title & publicationTitle \\
+    Publication Abstract & publicationAbstract \\
+    Publication Journal & publicationJournal \\
+    Publication Volume & publicationVolume \\
+    Publication Issue & publicationIssue \\
+    Publication Status & publicationStatus \\
+    Publication website & publicationWebsite \\
+    Comment & comment \\
+\stoptable
+
+\section{PublicationType}
+Enumeration of publication types in FSKML taken from RIS.
+
+% | Literal | Name | Value |
+% | :------ | :--- | :---- |
+% | null | null | -1 |
+% | Abstract | ABST | 0 |
+% | Audiovisual material | ADVS | 1 |
+% | Aggregated Database | AGGR | 2 |
+% | Ancient Text | ANCIENT | 3 |
+% | Art Work | ART | 4 |
+% | Bill | BILL | 5 |
+% | Blog | BLOG | 6 |
+% | Whole book | BOOK | 7 |
+% | Case | CASE | 8 |
+% | Book chapter | CHAP | 9 |
+% | Chart | CHART | 10 |
+% | Classical Work | CLSWK | 11 |
+% | Computer Program | COMP | 12 |
+% | Conference proceeding | CONF | 13 |
+% | Conference paper | CPAPER | 14 |
+% | Catalog | CTLG | 15 |
+% | Data file | DATA | 16 |
+% | Online Database | DBASE | 17 |
+% | Dictionary | DICT | 18 |
+% | Electronic Book | EBOOK | 19 |
+% | Electronic Book Section | ECHAP | 20 |
+% | Edited Book | EDBOOK | 21 |
+% | Electronic Article | EJOUR | 22 |
+% | Web Page | ELECT | 23 |
+% | Encyclopedia | ENCYC | 24
+% | Equation | EQUA | 25 |
+% | Figure | FIGURE | 26 |
+% | Generic | GEN | 27 |
+% | Government Document | GOVDOC | 28 |
+% | Grant | GRANT | 29 |
+% | Hearing | HEAR | 30 |
+% | Internet Communication | ICOMM | 31 |
+% | In Press | INPR | 32 |
+% | Journal | JOUR | 33 |
+% | Journal (full) | JFULL | 34 |
+% | Legal Rule or Regulation | LEGAL | 35 |
+% | Manuscript | MANSCPT | 36 |
+% | Map | MAP | 37 |
+% | Magazine article | MGZN | 38 |
+% | Motion picture | MPCT | 39 |
+% | Online Multimedia | MULTI | 40 |
+% | Music score | MUSIC | 41 |
+% | Newspaper | NEWS | 42 |
+% | Pamphlet | PAMP | 43 |
+% | Patent | PAT | 44 |
+% | Personal communication | PCOMM | 45 |
+% | Report | RPRT | 46 |
+% | Serial publication | SER | 47 |
+% | Slide | SLIDE | 48 |
+% | Sound recording | SOUND | 49 |
+% | Standard | STAND | 50 |
+% | Statute | STAT | 51 |
+% | Thesis/Dissertation | THES | 52 |
+% | Unpublished work | UNPB | 53 |
+% | Video recording | VIDEO | 54 |
+
+% Example:
+% ```json
+% {
+%       "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//Reference",
+%       "isReferenceDescription" : true,
+%       "publicationType" : "Pamphlet",
+%       "publicationDate" : "3805-07-02T00:00:00",
+%       "doi" : "10.1111/risa.12758",
+%       "authorList" : "Jack Bauer, Kiefer Sutherland",
+%       "publicationTitle" : "Quantitative Risk Assessment of Norovirus Transmission in Food Establishments: Evaluating the Impact of Intervention Strategies and Food Employee Behavior on the Risk Associated with Norovirus in Foods",
+%       "publicationAbstract" : "This research looks at the work of Margaret C. Anderson, the editor of the Little Review.  The review published first works by Sherwood Anderson, James Joyce, Wyndham Lewis, and Ezra Pound.  This research draws upon mostly primary sources including memoirs, published letters, and a complete collection of the Little Review. Most prior research on Anderson focuses on her connection to the famous writers and personalities that she published and associated with.  This focus undermines her role as the dominant creative force behind one of the most influential little magazines published in the 20th Century. This case example shows how little magazine publishing is arguably a literary art",
+%       "publicationStatus" : "Accepted",
+%       "publicationWebsite" : "https://www.nature.com",
+%       "comment" : "publisher demanded edits"
+% }
+% ```
+
+% ## SpatialInformation
+
+% | Property | Type | Cardinality |
+% | :------- | :--- | :---------: |
+% | Region | StringObject | 0 |
+% | Country | StringObject | 0 |
+
+% Example:
+% ```json
+% {
+%       "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//SpatialInformation",
+%       "region" : "Bayern",
+%       "country" : "Germany"
+% }
+% ```
+
+% ### Mapping to RAKIP SpatialInformation
+
+% | RAKIP | FSKML |
+% | :---- | :---- |
+% | Region | region |
+% | Country | country |
+
+% ## Scope
+
+% | Property | Type | Cardinality |
+% | :------- | :--- | :---------: |
+% | product | [Product](#product) | 0 |
+% | hazard | [Hazard](#hazard) | 0 |
+% | populationGroup | [PopulationGroup](#populationgroup) | 0 |
+% | generalComment | EString | 0..1 |
+% | temporalInformation | EString | 0..1 |
+% | spatialInformation | [SpatialInformation](#spatialinformation) | 0 |
+
+% Example:
+% ```json
+% {
+%     "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//Scope",
+%     "generalComment" : "(General Comment) The Scope of this model is universal",
+%     "temporalInformation" : "1990 - 2000",
+%     "product" : [ {
+%       "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//Product",
+%       "productName" : "Lettuce",
+%       "productDescription" : "fresh german lettuce",
+%       "productUnit" : "g",
+%       "productionMethod" : "Organic production",
+%       "packaging" : "Packed",
+%       "productTreatment" : "Freezing",
+%       "originCountry" : "Germany",
+%       "originArea" : "Aachen, Kreisfreie Stadt",
+%       "fisheriesArea" : "Arctic Sea",
+%       "productionDate" : "3911-10-30T00:00:00",
+%       "expiryDate" : "3911-12-01T00:00:00"
+%     }
+% }
+% ```
+
+% ### Mapping to RAKIP
+
+% | RAKIP | FSKML |
+% | :---- | :---- |
+% | Product/Matrix | product |
+% | Hazard | hazard |
+% | Population Group | populationGroup |
+% | General comment | generalComment |
+% | Temporal information | temporalInformation |
+% | Spatial information | spatialInformation |
+
+% ## Study
+
+% | Property | Type | Cardinality |
+% | :------- | :--- | :---------: |
+% | studyIdentifier | EString | 0..1 |
+% | studyTitle | EString | 1..1 |
+% | studyDescription | EString | 0..1 |
+% | studyDesignType | EString | 0..1 |
+% | studyAssayMeasurementType | EString | 0..1 |
+% | studyAssayTechnologyType | EString | 0..1 |
+% | studyAssayTechnologyPlatform | EString | 0..1 |
+% | accreditationProcedureForTheAssayTechnology | EString | 0..1 |
+% | studyProtocolName | EString | 0..1 |
+% | studyProtocolType | EString | 0..1 |
+% | studyProtocolDescription | EString | 0..1 |
+% | studyProtocolURI | URI | 0..1 |
+% | studyProtocolVersion | EString | 0..1 |
+% | studyProtocolParametersName | EString | 0..1 |
+% | studyProtocolComponentsName | EString | 0..1 |
+% | studyProtocolComponentsType | EString | 0..1 |
+
+% Example:
+% ```json
+% {
+%       "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//Study",
+%       "studyIdentifier" : "Study_Generic_Sheet_1",
+%       "studyTitle" : "Quantitative Risk Assessment of Norovirus Transmission in Food Establishments: Evaluating the Impact of Intervention Strategies and Food Employee Behavior on the Risk Associated with Norovirus in Foods",
+%       "studyDescription" : "This Study will show, wether the FSK Lab will correctly read and run a generic and fully annotated model",
+%       "studyDesignType" : "Trial and Error",
+%       "studyAssayMeasurementType" : "It works or it doesn't",
+%       "studyAssayTechnologyType" : "Anatomic-pathologic Tests",
+%       "studyAssayTechnologyPlatform" : "Orbital Platform",
+%       "accreditationProcedureForTheAssayTechnology" : "ISO/IEC17025",
+%       "studyProtocolName" : "Extraction Protocol Of FSK",
+%       "studyProtocolType" : "Extraction Protocol",
+%       "studyProtocolDescription" : "The protocol is definitly not made up",
+%       "studyProtocolURI" : "https://url-for-study-protocol-location.bfr.bund.de",
+%       "studyProtocolVersion" : "version 1.0",
+%       "studyProtocolParametersName" : "Parameter 1",
+%       "studyProtocolComponentsName" : "windows pc",
+%       "studyProtocolComponentsType" : "hardware"
+% }
+% ```
+
+% ### Mapping to RAKIP Study
+
+% | RAKIP | FSKML |
+% | :---- | :---- |
+% | Study Identifier | studyIdentifier |
+% | Study Title | studyTitle |
+% | Study Description | studyDescription |
+% | Study Design Type | studyDesignType |
+% | Study Assay Measurement Type | studyAssayMeasurementType |
+% | Study Assay Technology Type | studyAssayTechnologyType |
+% | Study Assay Technology Platform | studyAssayTechnologyPlatform |
+% | Accreditation procedure for the assay technology | accreditationProcedureForTheAssayTechnology |
+% | Study Protocol Name | studyProtocolName |
+% | Study Protocol Type | studyProtocolType |
+% | Study Protocol Description | studyProtocolDescription |
+% | Study Protocol URI | studyProtocolURI |
+% | Study Protocol Version | studyProtocolVersion |
+% | Study Protocol Parameters Name | studyProtocolParametersName |
+% | Study Protocol Components Name | studyProtocolComponentsName |
+% | Study Protocol Components Type | studyProtocolComponentsType |
+
+% ## StudySample
+
+% | Property | Type | Cardinality |
+% | :------- | :--- | :---------: |
+% | sampleName | EString | 1..1 |
+% | protocolOfSampleCollection | EString | 1..1 |
+% | samplingStrategy | EString | 0..1 |
+% | typeOfSamplingProgram | EString | 0..1 |
+% | samplingMethod | EString | 0..1 |
+% | samplingPlan | EString | 1..1 |
+% | samplingWeight | EString | 1..1 |
+% | samplingSize | EString | 1..1 |
+% | lotSizeUnit | EString | 0..1 |
+% | samplingPoint | EString | 0..1 |
+
+% Example:
+% ```json
+% {
+%       "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//StudySample",
+%       "sampleName" : "Sample 1",
+%       "protocolOfSampleCollection" : "SampleID_1",
+%       "samplingStrategy" : "Convenient sampling",
+%       "typeOfSamplingProgram" : "Diet study",
+%       "samplingMethod" : "According to Reg 152/2009",
+%       "samplingPlan" : "Random sampling",
+%       "samplingWeight" : "description of the method employed to compute sampling weight (nonresponse-adjusted weight)",
+%       "samplingSize" : "10000.0",
+%       "lotSizeUnit" : "log10(CFU/25g)",
+%       "samplingPoint" : "Catering"
+% }
+% ```
+
+% ### Mapping to RAKIP StudySample
+
+% | RAKIP | FSKML |
+% | :---- | :---- |
+% | Sample Name (ID) | sampleName |
+% | Protocol of sample collection | protocolOfSampleCollection |
+% | Sampling strategy | samplingStrategy |
+% | Type of sampling program | typeOfSamplingProgram |
+% | Sampling method | samplingMethod |
+% | Sampling plan | samplingPlan |
+% | Sampling weight | samplingWeight |
+% | Sampling size | samplingSize |
+% | Lot size unit | lotSizeUnit |
+% | Sampling point | samplingPoint |
