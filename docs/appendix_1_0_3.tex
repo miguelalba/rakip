@@ -638,258 +638,257 @@ FSKML defines a number of metadata classes:
 \section{PublicationType}
 Enumeration of publication types in FSKML taken from RIS.
 
-% | Literal | Name | Value |
-% | :------ | :--- | :---- |
-% | null | null | -1 |
-% | Abstract | ABST | 0 |
-% | Audiovisual material | ADVS | 1 |
-% | Aggregated Database | AGGR | 2 |
-% | Ancient Text | ANCIENT | 3 |
-% | Art Work | ART | 4 |
-% | Bill | BILL | 5 |
-% | Blog | BLOG | 6 |
-% | Whole book | BOOK | 7 |
-% | Case | CASE | 8 |
-% | Book chapter | CHAP | 9 |
-% | Chart | CHART | 10 |
-% | Classical Work | CLSWK | 11 |
-% | Computer Program | COMP | 12 |
-% | Conference proceeding | CONF | 13 |
-% | Conference paper | CPAPER | 14 |
-% | Catalog | CTLG | 15 |
-% | Data file | DATA | 16 |
-% | Online Database | DBASE | 17 |
-% | Dictionary | DICT | 18 |
-% | Electronic Book | EBOOK | 19 |
-% | Electronic Book Section | ECHAP | 20 |
-% | Edited Book | EDBOOK | 21 |
-% | Electronic Article | EJOUR | 22 |
-% | Web Page | ELECT | 23 |
-% | Encyclopedia | ENCYC | 24
-% | Equation | EQUA | 25 |
-% | Figure | FIGURE | 26 |
-% | Generic | GEN | 27 |
-% | Government Document | GOVDOC | 28 |
-% | Grant | GRANT | 29 |
-% | Hearing | HEAR | 30 |
-% | Internet Communication | ICOMM | 31 |
-% | In Press | INPR | 32 |
-% | Journal | JOUR | 33 |
-% | Journal (full) | JFULL | 34 |
-% | Legal Rule or Regulation | LEGAL | 35 |
-% | Manuscript | MANSCPT | 36 |
-% | Map | MAP | 37 |
-% | Magazine article | MGZN | 38 |
-% | Motion picture | MPCT | 39 |
-% | Online Multimedia | MULTI | 40 |
-% | Music score | MUSIC | 41 |
-% | Newspaper | NEWS | 42 |
-% | Pamphlet | PAMP | 43 |
-% | Patent | PAT | 44 |
-% | Personal communication | PCOMM | 45 |
-% | Report | RPRT | 46 |
-% | Serial publication | SER | 47 |
-% | Slide | SLIDE | 48 |
-% | Sound recording | SOUND | 49 |
-% | Standard | STAND | 50 |
-% | Statute | STAT | 51 |
-% | Thesis/Dissertation | THES | 52 |
-% | Unpublished work | UNPB | 53 |
-% | Video recording | VIDEO | 54 |
+\tabular{|l|l|l|}
+    \hline
+    \textbf{Literal} & \textbf{Name} & \textbf{Value} \\
+    \hline
+    null & null & -1 \\
+    Abstract & ABST & 0 \\
+    Audiovisual material & ADVS & 1 \\
+    Aggregated Database & AGGR & 2 \\
+    Ancient Text & ANCIENT & 3 \\
+    Art Work & ART & 4 \\
+    Bill & BILL & 5 \\
+    Blog & BLOG & 6 \\
+    Whole book & BOOK & 7 \\
+    Case & CASE & 8 \\
+    Book chapter & CHAP & 9 \\
+    Chart & CHART & 10 \\
+    Classical Work & CLSWK & 11 \\
+    Computer Program & COMP & 12 \\
+    Conference proceeding & CONF & 13 \\
+    Conference paper & CPAPER & 14 \\
+    Catalog & CTLG & 15 \\
+    Data file & DATA & 16 \\
+    Online Database & DBASE & 17 \\
+    Dictionary & DICT & 18 \\
+    Electronic Book & EBOOK & 19 \\
+    Electronic Book Section & ECHAP & 20 \\
+    Edited Book & EDBOOK & 21 \\
+    Electronic Article & EJOUR & 22 \\
+    Web Page & ELECT & 23 \\
+    Encyclopedia & ENCYC & 24 \\
+    Equation & EQUA & 25 \\
+    Figure & FIGURE & 26 \\
+    Generic & GEN & 27 \\
+    Government Document & GOVDOC & 28 \\
+    Grant & GRANT & 29 \\
+    Hearing & HEAR & 30 \\
+    Internet Communication & ICOMM & 31 \\
+    In Press & INPR & 32 \\
+    Journal & JOUR & 33 \\
+    Journal (full) & JFULL & 34 \\
+    Legal Rule or Regulation & LEGAL & 35 \\
+    Manuscript & MANSCPT & 36 \\
+    Map & MAP & 37 \\
+    Magazine article & MGZN & 38 \\
+    Motion picture & MPCT & 39 \\
+    Online Multimedia & MULTI & 40 \\
+    Music score & MUSIC & 41 \\
+    Newspaper & NEWS & 42 \\
+    Pamphlet & PAMP & 43 \\
+    Patent & PAT & 44 \\
+    Personal communication & PCOMM & 45 \\
+    Report & RPRT & 46 \\
+    Serial publication & SER & 47 \\
+    Slide & SLIDE & 48 \\
+    Sound recording & SOUND & 49 \\
+    Standard & STAND & 50 \\
+    Statute & STAT & 51 \\
+    Thesis/Dissertation & THES & 52 \\
+    Unpublished work & UNPB & 53 \\
+    Video recording & VIDEO & 54 \\
+    \hline
+\endtabular
 
-% Example:
-% ```json
-% {
-%       "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//Reference",
-%       "isReferenceDescription" : true,
-%       "publicationType" : "Pamphlet",
-%       "publicationDate" : "3805-07-02T00:00:00",
-%       "doi" : "10.1111/risa.12758",
-%       "authorList" : "Jack Bauer, Kiefer Sutherland",
-%       "publicationTitle" : "Quantitative Risk Assessment of Norovirus Transmission in Food Establishments: Evaluating the Impact of Intervention Strategies and Food Employee Behavior on the Risk Associated with Norovirus in Foods",
-%       "publicationAbstract" : "This research looks at the work of Margaret C. Anderson, the editor of the Little Review.  The review published first works by Sherwood Anderson, James Joyce, Wyndham Lewis, and Ezra Pound.  This research draws upon mostly primary sources including memoirs, published letters, and a complete collection of the Little Review. Most prior research on Anderson focuses on her connection to the famous writers and personalities that she published and associated with.  This focus undermines her role as the dominant creative force behind one of the most influential little magazines published in the 20th Century. This case example shows how little magazine publishing is arguably a literary art",
-%       "publicationStatus" : "Accepted",
-%       "publicationWebsite" : "https://www.nature.com",
-%       "comment" : "publisher demanded edits"
-% }
-% ```
+\begin{lstlisting}[caption={Example of Reference}, language=JSON]
+{
+      "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//Reference",
+      "isReferenceDescription" : true,
+      "publicationType" : "Pamphlet",
+      "publicationDate" : "3805-07-02T00:00:00",
+      "doi" : "10.1111/risa.12758",
+      "authorList" : "Jack Bauer, Kiefer Sutherland",
+      "publicationTitle" : "Quantitative Risk Assessment of Norovirus Transmission in ...",
+      "publicationAbstract" : "This research looks at the work of Margaret C. Anderson, ...",
+      "publicationStatus" : "Accepted",
+      "publicationWebsite" : "https://www.nature.com",
+      "comment" : "publisher demanded edits"
+}
+\end{lstlisting}
 
-% ## SpatialInformation
+\section{SpatialInformation}
 
-% | Property | Type | Cardinality |
-% | :------- | :--- | :---------: |
-% | Region | StringObject | 0 |
-% | Country | StringObject | 0 |
+\propertyTypeCardinalityTable
+    Region & StringObject & 0 \\
+    Country & StringObject & 0 \\
+\stoptable
 
-% Example:
-% ```json
-% {
-%       "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//SpatialInformation",
-%       "region" : "Bayern",
-%       "country" : "Germany"
-% }
-% ```
+\begin{lstlisting}[caption={Example of SpatialInformation}, language=JSON]
+{
+      "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//SpatialInformation",
+      "region" : "Bayern",
+      "country" : "Germany"
+}
+\end{lstlisting}
 
-% ### Mapping to RAKIP SpatialInformation
+\subsection{Mapping to RAKIP SpatialInformation}
 
-% | RAKIP | FSKML |
-% | :---- | :---- |
-% | Region | region |
-% | Country | country |
+\mapTable
+    Region & region \\
+    Country & country \\
+\stoptable
 
-% ## Scope
+\section{Scope}
 
-% | Property | Type | Cardinality |
-% | :------- | :--- | :---------: |
-% | product | [Product](#product) | 0 |
-% | hazard | [Hazard](#hazard) | 0 |
-% | populationGroup | [PopulationGroup](#populationgroup) | 0 |
-% | generalComment | EString | 0..1 |
-% | temporalInformation | EString | 0..1 |
-% | spatialInformation | [SpatialInformation](#spatialinformation) | 0 |
+\propertyTypeCardinalityTable
+    product & Product & 0 \\
+    hazard & Hazard & 0 \\
+    populationGroup & PopulationGroup & 0 \\
+    generalComment & EString & 0..1 \\
+    temporalInformation & EString & 0..1 \\
+    spatialInformation & SpatialInformation & 0 \\
+\stoptable
 
-% Example:
-% ```json
-% {
-%     "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//Scope",
-%     "generalComment" : "(General Comment) The Scope of this model is universal",
-%     "temporalInformation" : "1990 - 2000",
-%     "product" : [ {
-%       "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//Product",
-%       "productName" : "Lettuce",
-%       "productDescription" : "fresh german lettuce",
-%       "productUnit" : "g",
-%       "productionMethod" : "Organic production",
-%       "packaging" : "Packed",
-%       "productTreatment" : "Freezing",
-%       "originCountry" : "Germany",
-%       "originArea" : "Aachen, Kreisfreie Stadt",
-%       "fisheriesArea" : "Arctic Sea",
-%       "productionDate" : "3911-10-30T00:00:00",
-%       "expiryDate" : "3911-12-01T00:00:00"
-%     }
-% }
-% ```
+\begin{lstlisting}[caption={Example of Scope}, language=JSON]
+{
+    "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//Scope",
+    "generalComment" : "(General Comment) The Scope of this model is universal",
+    "temporalInformation" : "1990 - 2000",
+    "product" : [ {
+      "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//Product",
+      "productName" : "Lettuce",
+      "productDescription" : "fresh german lettuce",
+      "productUnit" : "g",
+      "productionMethod" : "Organic production",
+      "packaging" : "Packed",
+      "productTreatment" : "Freezing",
+      "originCountry" : "Germany",
+      "originArea" : "Aachen, Kreisfreie Stadt",
+      "fisheriesArea" : "Arctic Sea",
+      "productionDate" : "3911-10-30T00:00:00",
+      "expiryDate" : "3911-12-01T00:00:00"
+    }
+}
+\end{lstlisting}
 
-% ### Mapping to RAKIP
+\subsection{Mapping to RAKIP}
 
-% | RAKIP | FSKML |
-% | :---- | :---- |
-% | Product/Matrix | product |
-% | Hazard | hazard |
-% | Population Group | populationGroup |
-% | General comment | generalComment |
-% | Temporal information | temporalInformation |
-% | Spatial information | spatialInformation |
+\mapTable
+    Product/Matrix & product \\
+    Hazard & hazard \\
+    Population Group & populationGroup \\
+    General comment & generalComment \\
+    Temporal information & temporalInformation \\
+    Spatial information & spatialInformation \\
+\stoptable
 
-% ## Study
+\section{Study}
 
-% | Property | Type | Cardinality |
-% | :------- | :--- | :---------: |
-% | studyIdentifier | EString | 0..1 |
-% | studyTitle | EString | 1..1 |
-% | studyDescription | EString | 0..1 |
-% | studyDesignType | EString | 0..1 |
-% | studyAssayMeasurementType | EString | 0..1 |
-% | studyAssayTechnologyType | EString | 0..1 |
-% | studyAssayTechnologyPlatform | EString | 0..1 |
-% | accreditationProcedureForTheAssayTechnology | EString | 0..1 |
-% | studyProtocolName | EString | 0..1 |
-% | studyProtocolType | EString | 0..1 |
-% | studyProtocolDescription | EString | 0..1 |
-% | studyProtocolURI | URI | 0..1 |
-% | studyProtocolVersion | EString | 0..1 |
-% | studyProtocolParametersName | EString | 0..1 |
-% | studyProtocolComponentsName | EString | 0..1 |
-% | studyProtocolComponentsType | EString | 0..1 |
+\propertyTypeCardinalityTable
+studyIdentifier & EString & 0..1 \\
+studyTitle & EString & 1..1 \\
+studyDescription & EString & 0..1 \\
+studyDesignType & EString & 0..1 \\
+studyAssayMeasurementType & EString & 0..1 \\
+studyAssayTechnologyType & EString & 0..1 \\
+studyAssayTechnologyPlatform & EString & 0..1 \\
+accreditationProcedureForTheAssayTechnology & EString & 0..1 \\
+studyProtocolName & EString & 0..1 \\
+studyProtocolType & EString & 0..1 \\
+studyProtocolDescription & EString & 0..1 \\
+studyProtocolURI & URI & 0..1 \\
+studyProtocolVersion & EString & 0..1 \\
+studyProtocolParametersName & EString & 0..1 \\
+studyProtocolComponentsName & EString & 0..1 \\
+studyProtocolComponentsType & EString & 0..1 \\
+\stoptable
 
-% Example:
-% ```json
-% {
-%       "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//Study",
-%       "studyIdentifier" : "Study_Generic_Sheet_1",
-%       "studyTitle" : "Quantitative Risk Assessment of Norovirus Transmission in Food Establishments: Evaluating the Impact of Intervention Strategies and Food Employee Behavior on the Risk Associated with Norovirus in Foods",
-%       "studyDescription" : "This Study will show, wether the FSK Lab will correctly read and run a generic and fully annotated model",
-%       "studyDesignType" : "Trial and Error",
-%       "studyAssayMeasurementType" : "It works or it doesn't",
-%       "studyAssayTechnologyType" : "Anatomic-pathologic Tests",
-%       "studyAssayTechnologyPlatform" : "Orbital Platform",
-%       "accreditationProcedureForTheAssayTechnology" : "ISO/IEC17025",
-%       "studyProtocolName" : "Extraction Protocol Of FSK",
-%       "studyProtocolType" : "Extraction Protocol",
-%       "studyProtocolDescription" : "The protocol is definitly not made up",
-%       "studyProtocolURI" : "https://url-for-study-protocol-location.bfr.bund.de",
-%       "studyProtocolVersion" : "version 1.0",
-%       "studyProtocolParametersName" : "Parameter 1",
-%       "studyProtocolComponentsName" : "windows pc",
-%       "studyProtocolComponentsType" : "hardware"
-% }
-% ```
+\begin{lstlisting}[caption={Example of Study}, language=JSON]
+{
+      "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//Study",
+      "studyIdentifier" : "Study_Generic_Sheet_1",
+      "studyTitle" : "Quantitative Risk Assessment of Norovirus Transmission in Food Establishments: Evaluating the Impact of Intervention Strategies and Food Employee Behavior on the Risk Associated with Norovirus in Foods",
+      "studyDescription" : "This Study will show, wether the FSK Lab will correctly read and run a generic and fully annotated model",
+      "studyDesignType" : "Trial and Error",
+      "studyAssayMeasurementType" : "It works or it doesn't",
+      "studyAssayTechnologyType" : "Anatomic-pathologic Tests",
+      "studyAssayTechnologyPlatform" : "Orbital Platform",
+      "accreditationProcedureForTheAssayTechnology" : "ISO/IEC17025",
+      "studyProtocolName" : "Extraction Protocol Of FSK",
+      "studyProtocolType" : "Extraction Protocol",
+      "studyProtocolDescription" : "The protocol is definitly not made up",
+      "studyProtocolURI" : "https://url-for-study-protocol-location.bfr.bund.de",
+      "studyProtocolVersion" : "version 1.0",
+      "studyProtocolParametersName" : "Parameter 1",
+      "studyProtocolComponentsName" : "windows pc",
+      "studyProtocolComponentsType" : "hardware"
+}
+\end{lstlisting}
 
-% ### Mapping to RAKIP Study
+\subsection{Mapping to RAKIP Study}
 
-% | RAKIP | FSKML |
-% | :---- | :---- |
-% | Study Identifier | studyIdentifier |
-% | Study Title | studyTitle |
-% | Study Description | studyDescription |
-% | Study Design Type | studyDesignType |
-% | Study Assay Measurement Type | studyAssayMeasurementType |
-% | Study Assay Technology Type | studyAssayTechnologyType |
-% | Study Assay Technology Platform | studyAssayTechnologyPlatform |
-% | Accreditation procedure for the assay technology | accreditationProcedureForTheAssayTechnology |
-% | Study Protocol Name | studyProtocolName |
-% | Study Protocol Type | studyProtocolType |
-% | Study Protocol Description | studyProtocolDescription |
-% | Study Protocol URI | studyProtocolURI |
-% | Study Protocol Version | studyProtocolVersion |
-% | Study Protocol Parameters Name | studyProtocolParametersName |
-% | Study Protocol Components Name | studyProtocolComponentsName |
-% | Study Protocol Components Type | studyProtocolComponentsType |
+\mapTable
+Study Identifier & studyIdentifier \\
+Study Title & studyTitle \\
+Study Description & studyDescription \\
+Study Design Type & studyDesignType \\
+Study Assay Measurement Type & studyAssayMeasurementType \\
+Study Assay Technology Type & studyAssayTechnologyType \\
+Study Assay Technology Platform & studyAssayTechnologyPlatform \\
+Accreditation procedure for the assay technology & accreditationProcedureForTheAssayTechnology \\
+Study Protocol Name & studyProtocolName \\
+Study Protocol Type & studyProtocolType \\
+Study Protocol Description & studyProtocolDescription \\
+Study Protocol URI & studyProtocolURI \\
+Study Protocol Version & studyProtocolVersion \\
+Study Protocol Parameters Name & studyProtocolParametersName \\
+Study Protocol Components Name & studyProtocolComponentsName \\
+Study Protocol Components Type & studyProtocolComponentsType \\
+\stoptable
 
-% ## StudySample
+\section{StudySample}
 
-% | Property | Type | Cardinality |
-% | :------- | :--- | :---------: |
-% | sampleName | EString | 1..1 |
-% | protocolOfSampleCollection | EString | 1..1 |
-% | samplingStrategy | EString | 0..1 |
-% | typeOfSamplingProgram | EString | 0..1 |
-% | samplingMethod | EString | 0..1 |
-% | samplingPlan | EString | 1..1 |
-% | samplingWeight | EString | 1..1 |
-% | samplingSize | EString | 1..1 |
-% | lotSizeUnit | EString | 0..1 |
-% | samplingPoint | EString | 0..1 |
+\propertyTypeCardinalityTable
+    sampleName & EString & 1..1 \\
+    protocolOfSampleCollection & EString & 1..1 \\
+    samplingStrategy & EString & 0..1 \\
+    typeOfSamplingProgram & EString & 0..1 \\
+    samplingMethod & EString & 0..1 \\
+    samplingPlan & EString & 1..1 \\
+    samplingWeight & EString & 1..1 \\
+    samplingSize & EString & 1..1 \\
+    lotSizeUnit & EString & 0..1 \\
+    samplingPoint & EString & 0..1 \\
+\stoptable
 
-% Example:
-% ```json
-% {
-%       "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//StudySample",
-%       "sampleName" : "Sample 1",
-%       "protocolOfSampleCollection" : "SampleID_1",
-%       "samplingStrategy" : "Convenient sampling",
-%       "typeOfSamplingProgram" : "Diet study",
-%       "samplingMethod" : "According to Reg 152/2009",
-%       "samplingPlan" : "Random sampling",
-%       "samplingWeight" : "description of the method employed to compute sampling weight (nonresponse-adjusted weight)",
-%       "samplingSize" : "10000.0",
-%       "lotSizeUnit" : "log10(CFU/25g)",
-%       "samplingPoint" : "Catering"
-% }
-% ```
+\begin{lstlisting}[caption={Example of StudySample}, language=JSON]
+{
+    "eClass" : "http://BfR/bund/de/knime/model/metadata_V1.0.3#//StudySample",
+    "sampleName" : "Sample 1",
+    "protocolOfSampleCollection" : "SampleID_1",
+    "samplingStrategy" : "Convenient sampling",
+    "typeOfSamplingProgram" : "Diet study",
+    "samplingMethod" : "According to Reg 152/2009",
+    "samplingPlan" : "Random sampling",
+    "samplingWeight" : "description of the method employed to compute sampling weight (nonresponse-adjusted weight)",
+    "samplingSize" : "10000.0",
+    "lotSizeUnit" : "log10(CFU/25g)",
+    "samplingPoint" : "Catering"
+}
+\end{lstlisting}
 
-% ### Mapping to RAKIP StudySample
+\subsection{Mapping to RAKIP StudySample}
 
-% | RAKIP | FSKML |
-% | :---- | :---- |
-% | Sample Name (ID) | sampleName |
-% | Protocol of sample collection | protocolOfSampleCollection |
-% | Sampling strategy | samplingStrategy |
-% | Type of sampling program | typeOfSamplingProgram |
-% | Sampling method | samplingMethod |
-% | Sampling plan | samplingPlan |
-% | Sampling weight | samplingWeight |
-% | Sampling size | samplingSize |
-% | Lot size unit | lotSizeUnit |
-% | Sampling point | samplingPoint |
+\mapTable
+    Sample Name (ID) & sampleName \\
+    Protocol of sample collection & protocolOfSampleCollection \\
+    Sampling strategy & samplingStrategy \\
+    Type of sampling program & typeOfSamplingProgram \\
+    Sampling method & samplingMethod \\
+    Sampling plan & samplingPlan \\
+    Sampling weight & samplingWeight \\
+    Sampling size & samplingSize \\
+    Lot size unit & lotSizeUnit \\
+    Sampling point & samplingPoint \\
+\stoptable
